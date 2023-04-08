@@ -41,13 +41,19 @@ public class SpeechToMove : MonoBehaviour
         speechInputHandler.AddResponse("Julie", () => StartToMove());
         speechInputHandler.AddResponse("Let's go", () => StartVisualization());
 
+        StartCoroutine(InitializeScene());
+    }
 
+    IEnumerator InitializeScene()
+    {
+        yield return new WaitForSeconds(3);
         audioSource.PlayOneShot(audioClips[0]);
         textAnimator.AnimateText("Hey there!\n" +
             "I am Julie the Pigeon, and I am your companion! Together we will have a great experience!\n" +
             "Turn your palm facing up and call my name, and I will come to you as fast as I can!\n" +
             "Let's try it out!");
     }
+
     // Update is called once per frame
     void Update()
     {

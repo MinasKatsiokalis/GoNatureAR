@@ -1842,13 +1842,29 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 182004379}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45b3eff181cc4244a8a14234096e62fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFocusRequired: 0
-  keywords: []
+  keywords:
+  - keyword: Yes
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1740321127}
+          m_TargetAssemblyTypeName: InitializeManager, Assembly-CSharp
+          m_MethodName: AiPollution
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   persistentKeywords: 0
   speechConfirmationTooltipPrefab: {fileID: 8046114618238072051, guid: 271778f6c957b524981067a81d238394,
     type: 3}
@@ -7351,7 +7367,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 77085835e6a808f48ad137aeb8a7ebf0, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
@@ -16245,8 +16261,8 @@ RectTransform:
   m_Father: {fileID: 1630573762}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 1.25, y: 0}
   m_SizeDelta: {x: 2.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -16400,7 +16416,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1.25, y: 0}
   m_SizeDelta: {x: 2.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1630573763
@@ -18208,9 +18224,12 @@ MonoBehaviour:
   no2: {fileID: 1704363662}
   pm2_5: {fileID: 422874845}
   pm10: {fileID: 2129984698}
-  audioSource: {fileID: 182004386}
   textAnimator: {fileID: 1121296381}
-  audioClip: {fileID: 8300000, guid: 7c60e997bc6f120459445cf82740a755, type: 3}
+  musicAudioSource: {fileID: 803077689}
+  companionAudioSource: {fileID: 182004386}
+  companionAudioClip: {fileID: 8300000, guid: 49aae819044a1a843a9520c3b7633414, type: 3}
+  companionAudioClip2: {fileID: 8300000, guid: fa96548942a729d4192c652a15fc6f8a, type: 3}
+  companionAudioClip3: {fileID: 8300000, guid: 7c60e997bc6f120459445cf82740a755, type: 3}
 --- !u!114 &1740321128
 MonoBehaviour:
   m_ObjectHideFlags: 0
