@@ -24,11 +24,11 @@ public class SpeechToMove : MonoBehaviour
     private bool isPalmUp = false;
     private Vector3 handPosition;
 
+    private State currentState;
 
     // Start is called before the first frame update
     void Start()
     {
-
         handTracker = GetComponent<SolverHandler>();
         SetHandTrackerProperties();
 
@@ -40,13 +40,33 @@ public class SpeechToMove : MonoBehaviour
         speechInputHandler = GetComponent<SpeechInputHandler>();
         speechInputHandler.AddResponse("Julie", () => StartToMove());
         speechInputHandler.AddResponse("Let's go", () => StartVisualization());
+        speechInputHandler.AddResponse("Yes", () => ResponseToYes());
+        speechInputHandler.AddResponse("Continue", () => ResponseToStop());
 
         StartCoroutine(InitializeScene());
     }
 
+    private void ResponseToYes()
+    {
+        if (currentState == State.AirQuality)
+            InitializeManager.Instance.AiPollution();
+        else if (currentState == State.Noise)
+            SetNoiseEffects.Instance.NoiseTransition();
+    }
+
+    private void ResponseToStop()
+    {
+        InitializeManager.Instance.StopAiPollution();
+
+        currentState = State.Noise;
+        SetNoiseEffects.Instance.InitNoiseScene();
+    }
+
     IEnumerator InitializeScene()
     {
+        currentState = State.Introduction;
         yield return new WaitForSeconds(3);
+
         audioSource.PlayOneShot(audioClips[0]);
         textAnimator.AnimateText("Hey there!\n" +
             "I am Julie the Pigeon, and I am your companion! Together we will have a great experience!\n" +
@@ -86,7 +106,7 @@ public class SpeechToMove : MonoBehaviour
         }
         constraintPalmUp.UpdateLinkedTransform = true;
         Debug.Log("Stop Moving");
-        if(!julieCalled)
+        if(!julieCalled && (currentState == State.Introduction))
         {
             audioSource.PlayOneShot(audioClips[1]);
             textAnimator.AnimateText("Nice!\nTogether we shall take a journey into the world of GoNature AR!\n" +
@@ -100,6 +120,9 @@ public class SpeechToMove : MonoBehaviour
     {
         audioSource.PlayOneShot(audioClips[3]);
         textAnimator.AnimateText("Alright!");
+
+        currentState = State.AirQuality;
+        InitializeManager.Instance.Init();
     }
 
     private void SetPalmUp(bool palmUp)
@@ -114,4 +137,11 @@ public class SpeechToMove : MonoBehaviour
         handTracker.TrackedHandJoint = TrackedHandJoint.Palm;
         handTracker.UpdateSolvers = true;
     }
+}
+
+public enum State
+{
+    Introduction,
+    AirQuality,
+    Noise
 }

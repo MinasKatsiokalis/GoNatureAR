@@ -1,8 +1,11 @@
 ﻿using Microsoft.MixedReality.Toolkit.UI;
 using UnityEngine;
+using System;
 
 public class HandMenuButtonToggle : MonoBehaviour
 {
+    public static Action onInfoButtonClicked;
+    
     [SerializeField]
     private GameObject targetObject;
 
@@ -52,6 +55,9 @@ public class HandMenuButtonToggle : MonoBehaviour
         {
             isButtonActive = !isButtonActive;
             targetObject.SetActive(isButtonActive);
+
+            if (isButtonActive && targetObject.name == "SceneDescriptionPanelRev")
+                onInfoButtonClicked?.Invoke();
         }
     }
 }

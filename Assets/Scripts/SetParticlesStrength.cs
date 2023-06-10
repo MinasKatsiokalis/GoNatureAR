@@ -7,6 +7,14 @@ using UnityEngine;
 
 public class SetParticlesStrength : MonoBehaviour
 {
+    public static SetParticlesStrength Instance;
+    private void Awake()
+    {
+        if (Instance != null)
+            Destroy(this);
+        else
+            Instance = this;
+    }
     [SerializeField] VisualEffect vfx_CO2;
     [SerializeField] VisualEffect vfx_NO2;
     [SerializeField] VisualEffect vfx_O3;
@@ -20,18 +28,14 @@ public class SetParticlesStrength : MonoBehaviour
     [SerializeField] int defaultStrengthPM2_5;
     [SerializeField] int defaultStrengthPM10;
 
-    public void OnValueChange(SliderEventData sliderEventData)
+    public void Disable()
     {
-        vfx_CO2.SetFloat("Strength", (defaultStrengthCO2 * sliderEventData.NewValue));
-        vfx_NO2.SetFloat("Strength", (defaultStrengthNO2 * sliderEventData.NewValue));
-        vfx_O3.SetFloat("Strength", (defaultStrengthO3 * sliderEventData.NewValue));
-        vfx_PM2_5.SetFloat("Strength", (defaultStrengthPM2_5 * sliderEventData.NewValue));
-        vfx_PM10.SetFloat("Strength", (defaultStrengthPM10 * sliderEventData.NewValue));
+        vfx_CO2.SetFloat("Strength", 0);
+        vfx_NO2.SetFloat("Strength", 0);
+        vfx_O3.SetFloat("Strength", 0);
+        vfx_PM2_5.SetFloat("Strength", 0);
+        vfx_PM10.SetFloat("Strength", 0);
 
-        if (sliderEventData.NewValue <= 0)
-            fogParticles.SetActive(false);
-        else
-            fogParticles.SetActive(true);
-
+        fogParticles.SetActive(false);
     }
 }

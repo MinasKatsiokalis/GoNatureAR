@@ -4,6 +4,15 @@ using UnityEngine;
 using UnityEngine.VFX;
 public class SetNoiseEffects : MonoBehaviour
 {
+    public static SetNoiseEffects Instance;
+    private void Awake()
+    {
+        if (Instance != null)
+            Destroy(this);
+        else
+            Instance = this;
+    }
+
     [SerializeField] VisualEffect vfx_Noise;
 
     [ColorUsage(true, true)]
@@ -18,6 +27,8 @@ public class SetNoiseEffects : MonoBehaviour
 
     [SerializeField] AudioSource musicAudioSource;
     [SerializeField] AudioSource effectsAudioSource;
+
+    [SerializeField] AudioClip musicAudioClip0;
     [SerializeField] AudioClip musicAudioClip;
     [SerializeField] AudioClip effectsAudioClip;
 
@@ -25,13 +36,15 @@ public class SetNoiseEffects : MonoBehaviour
     [SerializeField] AudioSource companionAudioSource;
     [SerializeField] AudioClip companionAudioClip;
     [SerializeField] AudioClip companionAudioClip2;
+
     Vector4 color_vect;
     Vector4 color2_vect;
-    // Start is called before the first frame update
-    void Start()
+    public void InitNoiseScene()
     {
         color_vect = new Vector4(color.r, color.g, color.b, color.a);
         color2_vect = new Vector4(color2.r, color2.g, color2.b, color2.a);
+
+        musicAudioSource.Stop();
 
         StartCoroutine(InitializeScene());
     }
@@ -39,6 +52,10 @@ public class SetNoiseEffects : MonoBehaviour
     IEnumerator InitializeScene()
     {
         yield return new WaitForSeconds(3);
+
+        vfx_Noise.gameObject.SetActive(true);
+        effectsAudioSource.Play();
+        musicAudioSource.PlayOneShot(musicAudioClip0);
 
         companionAudioSource.PlayOneShot(companionAudioClip);
         textAnimator.AnimateText("Look, this place is so nice and calm!\nCan you feel it too?");
@@ -59,6 +76,10 @@ public class SetNoiseEffects : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         StartCoroutine(SetNoiseEffect());
+
+        yield return new WaitForSeconds(20);
+        //Credits
+        Credits.Instance.EnableCredits();
     }
 
     IEnumerator SetNoiseEffect()
