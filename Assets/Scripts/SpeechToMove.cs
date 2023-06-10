@@ -4,15 +4,31 @@ using UnityEngine.Serialization;
 using Microsoft.MixedReality.Toolkit.Utilities.Solvers;
 using Microsoft.MixedReality.Toolkit.Input;
 using Microsoft.MixedReality.Toolkit.Utilities;
+using Microsoft.MixedReality.Toolkit.UI;
+using TMPro;
 
 [RequireComponent(typeof(SolverHandler))]
 [RequireComponent(typeof(HandConstraintPalmUp))]
 [RequireComponent(typeof(SpeechInputHandler))]
 public class SpeechToMove : MonoBehaviour
 {
+    public static SpeechToMove Instance;
+    private void Awake()
+    {
+        if (Instance != null)
+            Destroy(this);
+        else
+            Instance = this;
+    }
+
     SolverHandler handTracker;
     HandConstraintPalmUp constraintPalmUp;
     SpeechInputHandler speechInputHandler;
+
+
+    public ButtonConfigHelper interactableButton;
+    public TMP_Text interactableButtonText;
+    public Interactable interactable;
 
     [SerializeField] TextAnim textAnimator;
     [SerializeField] AudioSource audioSource;
@@ -29,6 +45,7 @@ public class SpeechToMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        interactable.IsEnabled = false;
         handTracker = GetComponent<SolverHandler>();
         SetHandTrackerProperties();
 
@@ -41,21 +58,25 @@ public class SpeechToMove : MonoBehaviour
         speechInputHandler.AddResponse("Julie", () => StartToMove());
         speechInputHandler.AddResponse("Let's go", () => StartVisualization());
         speechInputHandler.AddResponse("Yes", () => ResponseToYes());
-        speechInputHandler.AddResponse("Continue", () => ResponseToStop());
+        speechInputHandler.AddResponse("Continue", () => ResponseToContinue());
 
         StartCoroutine(InitializeScene());
     }
 
-    private void ResponseToYes()
+    public void ResponseToYes()
     {
+        interactable.IsEnabled = false;
+
         if (currentState == State.AirQuality)
             InitializeManager.Instance.AiPollution();
         else if (currentState == State.Noise)
             SetNoiseEffects.Instance.NoiseTransition();
     }
 
-    private void ResponseToStop()
+    public void ResponseToContinue()
     {
+        interactable.IsEnabled = false;
+
         InitializeManager.Instance.StopAiPollution();
 
         currentState = State.Noise;
@@ -67,11 +88,18 @@ public class SpeechToMove : MonoBehaviour
         currentState = State.Introduction;
         yield return new WaitForSeconds(3);
 
+        audioSource.Stop();
         audioSource.PlayOneShot(audioClips[0]);
         textAnimator.AnimateText("Hey there!\n" +
             "I am Julie the Pigeon, and I am your companion! Together we will have a great experience!\n" +
             "Turn your palm facing up and call my name, and I will come to you as fast as I can!\n" +
             "Let's try it out!");
+
+        interactableButton.OnClick.RemoveAllListeners();
+        interactableButton.OnClick.AddListener(StartToMove);
+        interactableButtonText.text = "Julie!";
+        interactable.IsEnabled = true;
+
     }
 
     // Update is called once per frame
@@ -85,6 +113,7 @@ public class SpeechToMove : MonoBehaviour
         if (!isPalmUp)
         {
             Debug.Log("Your palm is not placed correctly!");
+            audioSource.Stop();
             audioSource.PlayOneShot(audioClips[2]);
             textAnimator.AnimateText("Please, keep your palm facing up!");
             julieCalled = false;
@@ -108,9 +137,16 @@ public class SpeechToMove : MonoBehaviour
         Debug.Log("Stop Moving");
         if(!julieCalled && (currentState == State.Introduction))
         {
+            audioSource.Stop();
             audioSource.PlayOneShot(audioClips[1]);
             textAnimator.AnimateText("Nice!\nTogether we shall take a journey into the world of GoNature AR!\n" +
                 "When you are ready say: <b>\"Let's Go\"</b>");
+
+            interactableButton.OnClick.RemoveAllListeners();
+            interactableButton.OnClick.AddListener(StartVisualization);
+            interactableButtonText.text = "Let's Go!";
+            interactable.IsEnabled = true;
+
         }
         julieCalled = true;
 
@@ -118,8 +154,10 @@ public class SpeechToMove : MonoBehaviour
 
     private void StartVisualization()
     {
+        audioSource.Stop();
         audioSource.PlayOneShot(audioClips[3]);
         textAnimator.AnimateText("Alright!");
+        interactable.IsEnabled = false;
 
         currentState = State.AirQuality;
         InitializeManager.Instance.Init();

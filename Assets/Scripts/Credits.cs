@@ -44,7 +44,7 @@ public class Credits : MonoBehaviour
     {
         yield return new WaitForSeconds(4);
 
-        while (_creditsPanel.transform.position.y <= 2.0f)
+        while (_creditsPanel.transform.position.y <= 5.0f)
         {
             _creditsPanel.transform.Translate(Vector3.up * Time.deltaTime * _speed);
             yield return null;

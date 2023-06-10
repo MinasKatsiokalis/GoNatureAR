@@ -1,3 +1,4 @@
+using Microsoft.MixedReality.Toolkit.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,7 @@ public class InitializeManager : MonoBehaviour
     }
 
     [SerializeField] GameObject handMenu;
+    [SerializeField] GameObject infoPanel;
 
     [SerializeField] GameObject fogParticles;
     [SerializeField] GameObject co2;
@@ -55,10 +57,17 @@ public class InitializeManager : MonoBehaviour
     IEnumerator InitializeScene()
     {
         yield return new WaitForSeconds(3);
+        companionAudioSource.Stop();
         companionAudioSource.PlayOneShot(companionAudioClip);
         textAnimator.AnimateText("Now that I introduced myself...\n" +
             "I should tell you that I have the ability to sense the air quality of the environment!\n"+
             "Do you wanna see the air through me eyes?");
+
+        SpeechToMove.Instance.interactableButton.OnClick.RemoveAllListeners();
+        SpeechToMove.Instance.interactableButton.OnClick.AddListener(SpeechToMove.Instance.ResponseToYes);
+        SpeechToMove.Instance.interactableButtonText.text = "Yes";
+        SpeechToMove.Instance.interactable.IsEnabled = true;
+
     }
 
     public void AiPollution()
@@ -71,6 +80,7 @@ public class InitializeManager : MonoBehaviour
         musicAudioSource.Stop();
         musicAudioSource.PlayOneShot(musicAudioClip);
 
+        companionAudioSource.Stop();
         companionAudioSource.PlayOneShot(companionAudioClip2);
         textAnimator.AnimateText("At first glance everyting seems quite normal...\n" +
             "but if we look deeper, we shall witness the true nature of the situation.\n" +
@@ -95,17 +105,20 @@ public class InitializeManager : MonoBehaviour
             yield return null;
 
         yield return new WaitForSeconds(2);
+
         companionAudioSource.PlayOneShot(companionAudioClip3);
         textAnimator.AnimateText("Put your left palm face up to view info panel!");
     }
     public void StopAiPollution()
     {
         handMenu.SetActive(false);
+        infoPanel.SetActive(false);
         SetParticlesStrength.Instance.Disable();
     }
 
     IEnumerator CoPressedButton()
     {
+        companionAudioSource.Stop();
         companionAudioSource.PlayOneShot(companionAudioClip4);
         textAnimator.AnimateText("These pollutants are related with:\n" +
             "1. Respiratory Conditions\n" +
@@ -120,5 +133,11 @@ public class InitializeManager : MonoBehaviour
         textAnimator.AnimateText("I haven't show you yet all my abilities...\n" +
             "My hearing is quite sensitive too. I want to show you, how your environment feels like to me.\n" +
             "When you are ready to proceed, please say <b>\"Continue\"</b>");
+
+        SpeechToMove.Instance.interactableButton.OnClick.RemoveAllListeners();
+        SpeechToMove.Instance.interactableButton.OnClick.AddListener(SpeechToMove.Instance.ResponseToContinue);
+        SpeechToMove.Instance.interactableButtonText.text = "Continue";
+        SpeechToMove.Instance.interactable.IsEnabled = true;
+
     }
 }

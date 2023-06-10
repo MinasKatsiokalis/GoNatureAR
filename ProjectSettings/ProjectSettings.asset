@@ -174,6 +174,11 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 6546090516126334403, guid: c56bfdcf5c850a246a31dfc330710d10, type: 2}
   - {fileID: 5258059378752340751, guid: 253ed06b0d48f2e4793c1afb7ae72f5f, type: 2}
   metroInputSource: 0
@@ -833,6 +838,7 @@ PlayerSettings:
   metroSplashScreenUseBackgroundColor: 0
   platformCapabilities:
     WindowsStoreApps:
+      CodeGeneration: False
       OfflineMapsManagement: False
       HumanInterfaceDevice: False
       Location: False
@@ -844,7 +850,6 @@ PlayerSettings:
       PrivateNetworkClientServer: True
       InternetClientServer: True
       VideosLibrary: False
-      BackgroundMediaPlayback: False
       Objects3D: False
       RemoteSystem: False
       BlockedChatMessages: False
@@ -867,9 +872,9 @@ PlayerSettings:
       PointOfService: False
       RecordedCallsFolder: False
       Contacts: False
-      InternetClient: True
       Proximity: False
-      CodeGeneration: False
+      InternetClient: True
+      BackgroundMediaPlayback: False
       EnterpriseAuthentication: False
   metroTargetDeviceFamilies:
     Desktop: False
