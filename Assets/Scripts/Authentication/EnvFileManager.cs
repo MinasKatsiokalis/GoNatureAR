@@ -30,12 +30,10 @@ public class EnvFileManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
 
-    private void Start()
-    {
         envVariables = ReadEnvFile(envFilePath);
     }
+
 
     private Dictionary<string, string> ReadEnvFile(string path)
     {
