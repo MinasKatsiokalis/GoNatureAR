@@ -90,7 +90,7 @@ public class SpeechToMove : MonoBehaviour
 
         audioSource.Stop();
         audioSource.PlayOneShot(audioClips[0]);
-        textAnimator.AnimateText("Hey there!\n" +
+        textAnimator.TypeText("Hey there!\n" +
             "I am Julie the Pigeon, and I am your companion! Together we will have a great experience!\n" +
             "Turn your palm facing up and call my name, and I will come to you as fast as I can!\n" +
             "Let's try it out!");
@@ -115,7 +115,7 @@ public class SpeechToMove : MonoBehaviour
             Debug.Log("Your palm is not placed correctly!");
             audioSource.Stop();
             audioSource.PlayOneShot(audioClips[2]);
-            textAnimator.AnimateText("Please, keep your palm facing up!");
+            textAnimator.TypeText("Please, keep your palm facing up!");
             julieCalled = false;
             return;
         }
@@ -139,7 +139,7 @@ public class SpeechToMove : MonoBehaviour
         {
             audioSource.Stop();
             audioSource.PlayOneShot(audioClips[1]);
-            textAnimator.AnimateText("Nice!\nTogether we shall take a journey into the world of GoNature AR!\n" +
+            textAnimator.TypeText("Nice!\nTogether we shall take a journey into the world of GoNature AR!\n" +
                 "When you are ready say: <b>\"Let's Go\"</b>");
 
             interactableButton.OnClick.RemoveAllListeners();
@@ -156,7 +156,7 @@ public class SpeechToMove : MonoBehaviour
     {
         audioSource.Stop();
         audioSource.PlayOneShot(audioClips[3]);
-        textAnimator.AnimateText("Alright!");
+        textAnimator.TypeText("Alright!");
         interactable.IsEnabled = false;
 
         currentState = State.AirQuality;

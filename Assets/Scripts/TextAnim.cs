@@ -6,52 +6,34 @@ using UnityEngine.UI;
 
 
 public class TextAnim : MonoBehaviour
-{
-    [SerializeField] TextMeshProUGUI textMeshPro;
+{   
+    [SerializeField]
+    private TMP_Text textMeshPro;
+    [SerializeField]
+    private float characterDelay;
+    private Coroutine currentCoroutine;
 
-    [TextArea(1, 10)] public string[] stringArray;
-
-    [SerializeField] float timeBtwnChars;
-    [SerializeField] float timeBtwnWords;
-
-    public void AnimateText(string text)
+    public void TypeText(string textToType)
     {
-        StartCoroutine(CoAnimateText(text));
-    }
-
-    private IEnumerator CoAnimateText(string text)
-    {
-        //for(int i=0; i <= stringArray.Length - 1; i++)
-        //{
-        textMeshPro.text = text;
-        LayoutRebuilder.ForceRebuildLayoutImmediate(textMeshPro.rectTransform.parent.GetComponent<RectTransform>());
-
-        yield return StartCoroutine(TextVisible());
-        //}
-    }
-
-    private int visibleCount = 0;
-    private int counter = 0;
-    private IEnumerator TextVisible()
-    {
-        textMeshPro.ForceMeshUpdate();
-        int totalVisibleCharacters = textMeshPro.textInfo.characterCount;
-
-        while (visibleCount < totalVisibleCharacters)
+        // Stop any ongoing typewriter effect
+        if (currentCoroutine != null)
         {
-            visibleCount = counter % (totalVisibleCharacters + 1);
-            textMeshPro.maxVisibleCharacters = visibleCount;
+            StopCoroutine(currentCoroutine);
+        }
+        // Start the typewriter effect for the new text
+        currentCoroutine = StartCoroutine(TypeWriterEffect(textToType, characterDelay));
+    }
 
-            /*
-            if (visibleCount >= totalVisibleCharacters)
-            {
-                i += 1;
-                Invoke("EndCheck", timeBtwnWords);
-                break;
-            }*/
+    private IEnumerator TypeWriterEffect(string textToType, float delay)
+    {
+        textMeshPro.text = textToType;
+        int maxVisibleCharacters = 0;
 
-            counter ++;
-            yield return new WaitForSeconds(timeBtwnChars);
+        for (int i = 0; i < textToType.Length; i++)
+        {
+            maxVisibleCharacters++;
+            textMeshPro.maxVisibleCharacters = maxVisibleCharacters;
+            yield return new WaitForSeconds(delay);
         }
     }
 }

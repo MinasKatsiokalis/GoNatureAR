@@ -62,7 +62,7 @@ public class SetNoiseEffects : MonoBehaviour
 
         companionAudioSource.Stop();
         companionAudioSource.PlayOneShot(companionAudioClip);
-        textAnimator.AnimateText("Look, this place is so nice and calm!\nCan you feel it too?");
+        textAnimator.TypeText("Look, this place is so nice and calm!\nCan you feel it too?");
 
         SpeechToMove.Instance.interactableButton.OnClick.RemoveAllListeners();
         SpeechToMove.Instance.interactableButton.OnClick.AddListener(SpeechToMove.Instance.ResponseToYes);
@@ -84,7 +84,7 @@ public class SetNoiseEffects : MonoBehaviour
 
         companionAudioSource.Stop();
         companionAudioSource.PlayOneShot(companionAudioClip2);
-        textAnimator.AnimateText("This is not your place though...\nYour place feels more like this.");
+        textAnimator.TypeText("This is not your place though...\nYour place feels more like this.");
 
         yield return new WaitForSeconds(0.5f);
         StartCoroutine(SetNoiseEffect());
@@ -92,7 +92,7 @@ public class SetNoiseEffects : MonoBehaviour
         yield return new WaitForSeconds(5f);
         companionAudioSource.Stop();
         companionAudioSource.PlayOneShot(companionAudioClip3);
-        textAnimator.AnimateText("Noise pollution is a major and increasing threat to human health.\n" +
+        textAnimator.TypeText("Noise pollution is a major and increasing threat to human health.\n" +
             "It can cause damage in many ways: \n" +
             "1. High blood pressure; \n" +
             "2. Headaches;\n" +

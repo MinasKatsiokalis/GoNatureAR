@@ -59,7 +59,7 @@ public class InitializeManager : MonoBehaviour
         yield return new WaitForSeconds(3);
         companionAudioSource.Stop();
         companionAudioSource.PlayOneShot(companionAudioClip);
-        textAnimator.AnimateText("Now that I introduced myself...\n" +
+        textAnimator.TypeText("Now that I introduced myself...\n" +
             "I should tell you that I have the ability to sense the air quality of the environment!\n"+
             "Do you wanna see the air through me eyes?");
 
@@ -82,7 +82,7 @@ public class InitializeManager : MonoBehaviour
 
         companionAudioSource.Stop();
         companionAudioSource.PlayOneShot(companionAudioClip2);
-        textAnimator.AnimateText("At first glance everyting seems quite normal...\n" +
+        textAnimator.TypeText("At first glance everyting seems quite normal...\n" +
             "but if we look deeper, we shall witness the true nature of the situation.\n" +
             "Hundreds of thousands of pollutant particles and gases surround us on each step of our lives,\n" +
             " affecting our health and well-being");
@@ -107,7 +107,7 @@ public class InitializeManager : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         companionAudioSource.PlayOneShot(companionAudioClip3);
-        textAnimator.AnimateText("Put your left palm face up to view info panel!");
+        textAnimator.TypeText("Put your left palm face up to view info panel!");
     }
     public void StopAiPollution()
     {
@@ -120,7 +120,7 @@ public class InitializeManager : MonoBehaviour
     {
         companionAudioSource.Stop();
         companionAudioSource.PlayOneShot(companionAudioClip4);
-        textAnimator.AnimateText("These pollutants are related with:\n" +
+        textAnimator.TypeText("These pollutants are related with:\n" +
             "1. Respiratory Conditions\n" +
             "2. Cardiovascular Diseases\n"+
             "3. Pregnancy Outcomes and\n" +
@@ -130,7 +130,7 @@ public class InitializeManager : MonoBehaviour
 
 
         companionAudioSource.PlayOneShot(companionAudioClip5);
-        textAnimator.AnimateText("I haven't show you yet all my abilities...\n" +
+        textAnimator.TypeText("I haven't show you yet all my abilities...\n" +
             "My hearing is quite sensitive too. I want to show you, how your environment feels like to me.\n" +
             "When you are ready to proceed, please say <b>\"Continue\"</b>");
 
