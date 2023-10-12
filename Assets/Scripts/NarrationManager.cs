@@ -1,4 +1,3 @@
-using Microsoft.MixedReality.Toolkit.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,20 +27,28 @@ public class NarrationManager : MonoBehaviour
 
     private void Start()
     {
+        currentDialogueIndex = 0;
         audioSource = GetComponent<AudioSource>();
         button.onClick.AddListener(() => dialogueTrigger?.Invoke());
     }
 
     public void TriggerNextDialogue()
     {
-        string narrationText;
-        AudioClip audioClip;
+        if (currentDialogueIndex >= narrationSequence.dialogues.Length) 
+        {
+            currentDialogueIndex= 0;
+            return;    
+        }
+        audioSource.Stop();
 
-        if(!narrationSequence.GetCurrentDialogue(out narrationText, out audioClip))
-            return;
+        var  dialogue = narrationSequence.GetCurrentDialogue(currentDialogueIndex);
+        string narrationText = dialogue.text;
+        AudioClip audioClip = dialogue.audioClip;
 
         audioSource.PlayOneShot(audioClip);
         textAnimator.TypeText(narrationText);
         Debug.Log(narrationText);
+
+        currentDialogueIndex++;
     }
 }
