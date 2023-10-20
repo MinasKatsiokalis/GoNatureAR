@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,49 +7,50 @@ using UnityEngine.UI;
 
 public class NarrationManager : MonoBehaviour
 {
+    public static NarrationManager Instance { get; private set; }
+
+    public static Action dialogueTrigger;
+
     [SerializeField]
     private NarrationScriptableObject narrationSequence;
-
-    [SerializeField]
-    private TextAnim textAnimator;
-
-    [SerializeField]
-    private Button button;
-
-    UnityEvent dialogueTrigger = new UnityEvent();
-
     private int currentDialogueIndex;
-    private AudioSource audioSource;
 
-    private void Awake() 
+    private void Awake()
     {
-        dialogueTrigger.AddListener(TriggerNextDialogue);
+        if (Instance == null)
+        {
+            Instance = this;
+            //DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnEnable() 
+    {
+        //dialogueTrigger += TriggerNextDialogue;
+    }
+
+    private void OnDisable()
+    {
+        //dialogueTrigger -= TriggerNextDialogue;
     }
 
     private void Start()
     {
         currentDialogueIndex = 0;
-        audioSource = GetComponent<AudioSource>();
-        button.onClick.AddListener(() => dialogueTrigger?.Invoke());
     }
 
-    public void TriggerNextDialogue()
+    public DialogueScriptableObject TriggerNextDialogue()
     {
         if (currentDialogueIndex >= narrationSequence.dialogues.Length) 
         {
             currentDialogueIndex= 0;
-            return;    
+            return null;
         }
-        audioSource.Stop();
-
-        var  dialogue = narrationSequence.GetCurrentDialogue(currentDialogueIndex);
-        string narrationText = dialogue.text;
-        AudioClip audioClip = dialogue.audioClip;
-
-        audioSource.PlayOneShot(audioClip);
-        textAnimator.TypeText(narrationText);
-        Debug.Log(narrationText);
-
         currentDialogueIndex++;
+        return narrationSequence.GetCurrentDialogue(currentDialogueIndex);
     }
 }
