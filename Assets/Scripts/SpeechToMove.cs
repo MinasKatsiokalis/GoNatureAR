@@ -177,9 +177,4 @@ public class SpeechToMove : MonoBehaviour
     }
 }
 
-public enum State
-{
-    Introduction,
-    AirQuality,
-    Noise
-}
+

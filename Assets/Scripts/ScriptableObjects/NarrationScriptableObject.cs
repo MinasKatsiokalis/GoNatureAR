@@ -5,8 +5,15 @@ public class NarrationScriptableObject : ScriptableObject
 {
     public DialogueScriptableObject[] dialogues;
 
-    public DialogueScriptableObject GetCurrentDialogue(int currentDialogueIndex)
+    public DialogueScriptableObject GetDialogueByKey(DialogueKey key)
     {
-        return dialogues[currentDialogueIndex];
+        foreach (var dialogue in dialogues)
+        {
+            if (dialogue.DialogueKey.Equals(key))
+            {
+                return dialogue;
+            }
+        }
+        return null;
     }
 }

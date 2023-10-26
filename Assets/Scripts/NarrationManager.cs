@@ -3,54 +3,64 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.UI;
 
 public class NarrationManager : MonoBehaviour
 {
     public static NarrationManager Instance { get; private set; }
 
-    public static Action dialogueTrigger;
+    //public static event Action<DialogueScriptableObject> OnDialogueTrigger;
 
     [SerializeField]
     private NarrationScriptableObject narrationSequence;
-    private int currentDialogueIndex;
+    private DialogueKey currentDialogueKey;
 
     private void Awake()
     {
         if (Instance == null)
-        {
             Instance = this;
-            //DontDestroyOnLoad(gameObject);
-        }
         else
-        {
-            Destroy(gameObject);
-        }
+            Destroy(this);
     }
 
     private void OnEnable() 
     {
-        //dialogueTrigger += TriggerNextDialogue;
+        GameManager.OnChangeState += OnChangeStateHandler;
     }
 
     private void OnDisable()
     {
-        //dialogueTrigger -= TriggerNextDialogue;
+        GameManager.OnChangeState -= OnChangeStateHandler;
     }
 
-    private void Start()
+    void OnChangeStateHandler(State state)
     {
-        currentDialogueIndex = 0;
-    }
-
-    public DialogueScriptableObject TriggerNextDialogue()
-    {
-        if (currentDialogueIndex >= narrationSequence.dialogues.Length) 
+        switch (state)
         {
-            currentDialogueIndex= 0;
-            return null;
+            case State.Introduction:
+                currentDialogueKey.State = State.Introduction;
+                break;
+            case State.AirQuality:
+                currentDialogueKey.State = State.AirQuality;
+                break;
+            case State.Noise:
+                currentDialogueKey.State = State.Noise;
+                break;
+            case State.Temperature:
+                currentDialogueKey.State = State.Temperature;
+                break;
+            case State.Outro:
+                currentDialogueKey.State = State.Outro;
+                break;
         }
-        currentDialogueIndex++;
-        return narrationSequence.GetCurrentDialogue(currentDialogueIndex);
+        currentDialogueKey.Keyword = "FirstDialogue";
     }
+
+    DialogueScriptableObject GetDialogue()
+    {
+        DialogueScriptableObject dialogue = narrationSequence.GetDialogueByKey(currentDialogueKey);
+        return dialogue;
+    }
+
 }

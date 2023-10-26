@@ -10,7 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 715e33f4352c9504298160de11462ccf, type: 3}
-  m_Name: Dialogue#3
+  m_Name: Dialogue_Intro_1
   m_EditorClassIdentifier: 
-  text: All right!
-  audioClip: {fileID: 8300000, guid: 35b985a3ed5736d468f2e0894fb33daa, type: 3}
+  DialogueKey:
+    chapter: 65
+    section: 2
+  Text: 
+  AudioClip: {fileID: 0}
