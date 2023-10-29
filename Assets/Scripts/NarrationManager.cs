@@ -1,19 +1,20 @@
+using Microsoft.MixedReality.Toolkit.Input;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.InputSystem.LowLevel;
-using UnityEngine.UI;
+using static SpeechProfile;
 
+[RequireComponent(typeof(SpeechInputHandler))]
 public class NarrationManager : MonoBehaviour
 {
     public static NarrationManager Instance { get; private set; }
 
-    //public static event Action<DialogueScriptableObject> OnDialogueTrigger;
+    public static event Action<DialogueScriptableObject> OnDialogueTrigger;
 
     [SerializeField]
-    private NarrationScriptableObject narrationSequence;
+    private NarrationScriptableObject _narrationSequence;
+
+    private SpeechInputHandler speechInputHandler;
     private DialogueKey currentDialogueKey;
 
     private void Awake()
@@ -34,12 +35,22 @@ public class NarrationManager : MonoBehaviour
         GameManager.OnChangeState -= OnChangeStateHandler;
     }
 
+    private void Start()
+    {
+        speechInputHandler = GetComponent<SpeechInputHandler>();
+        speechInputHandler.AddResponse(GetKeywordToString(Keyword.Julie), () => GetDialogue(Keyword.Julie));
+        speechInputHandler.AddResponse(GetKeywordToString(Keyword.Continue), () => GetDialogue(Keyword.Continue));
+        speechInputHandler.AddResponse(GetKeywordToString(Keyword.Yes), () => GetDialogue(Keyword.Yes));
+        speechInputHandler.AddResponse(GetKeywordToString(Keyword.LetsGo), () => GetDialogue(Keyword.LetsGo));
+    }
+
     void OnChangeStateHandler(State state)
     {
         switch (state)
         {
             case State.Introduction:
                 currentDialogueKey.State = State.Introduction;
+                GetDialogue(Keyword.Intro);
                 break;
             case State.AirQuality:
                 currentDialogueKey.State = State.AirQuality;
@@ -54,13 +65,16 @@ public class NarrationManager : MonoBehaviour
                 currentDialogueKey.State = State.Outro;
                 break;
         }
-        currentDialogueKey.Keyword = "FirstDialogue";
     }
 
-    DialogueScriptableObject GetDialogue()
+    void GetDialogue(Keyword keyword)
     {
-        DialogueScriptableObject dialogue = narrationSequence.GetDialogueByKey(currentDialogueKey);
-        return dialogue;
+        currentDialogueKey.Keyword = keyword;
+        OnDialogueTrigger?.Invoke(_narrationSequence.GetDialogueByKey(currentDialogueKey));
     }
 
+    public void GetPalmNotUpDialogue()
+    {
+        OnDialogueTrigger?.Invoke(_narrationSequence.GetDialogueByKey(new DialogueKey(State.Introduction, Keyword.Palm)));
+    }
 }

@@ -10,20 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 715e33f4352c9504298160de11462ccf, type: 3}
-  m_Name: Dialogue_Intro_0
+  m_Name: Dialogue_Alrigth
   m_EditorClassIdentifier: 
   DialogueKey:
     State: 0
-    Keyword: 
-  Text: 'Hey there!
-
-    I am Julie the pigeon and I am your companion...together
-    we will have a great experience into the world of GoNature AR.
-
-
-    Turn your
-    palm facing up, and call my name and I will come to you as fast as I can.
-
-    Let''s
-    try it out.'
-  AudioClip: {fileID: 8300000, guid: ce906d1ef73de574fa74acb358140541, type: 3}
+    Keyword: 5
+  Text: Alright!
+  AudioClip: {fileID: 8300000, guid: 35b985a3ed5736d468f2e0894fb33daa, type: 3}

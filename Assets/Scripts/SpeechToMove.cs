@@ -6,6 +6,7 @@ using Microsoft.MixedReality.Toolkit.Input;
 using Microsoft.MixedReality.Toolkit.Utilities;
 using Microsoft.MixedReality.Toolkit.UI;
 using TMPro;
+using System;
 
 [RequireComponent(typeof(SolverHandler))]
 [RequireComponent(typeof(HandConstraintPalmUp))]
@@ -13,13 +14,6 @@ using TMPro;
 public class SpeechToMove : MonoBehaviour
 {
     public static SpeechToMove Instance;
-    private void Awake()
-    {
-        if (Instance != null)
-            Destroy(this);
-        else
-            Instance = this;
-    }
 
     SolverHandler handTracker;
     HandConstraintPalmUp constraintPalmUp;
@@ -35,12 +29,33 @@ public class SpeechToMove : MonoBehaviour
     [SerializeField] AudioClip[] audioClips;
 
     [SerializeField] float travelSpeed = 0.5f;
-    [SerializeField] float distanceThreshhold =0.1f;
+    [SerializeField] float distanceThreshhold = 0.1f;
 
-    private bool isPalmUp = false;
+    public bool isPalmUp { private set; get; } = false;
+
     private Vector3 handPosition;
 
     private State currentState;
+
+    private void Awake()
+    {
+        if (Instance != null)
+            Destroy(this);
+        else
+            Instance = this;
+    }
+
+    private void OnEnable()
+    {
+        GameManager.OnChangeState += OnStateChangeHandler;
+        NarrationManager.OnDialogueTrigger += OnDialogueTriggerHandler;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnChangeState -= OnStateChangeHandler;
+        NarrationManager.OnDialogueTrigger -= OnDialogueTriggerHandler;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -79,13 +94,11 @@ public class SpeechToMove : MonoBehaviour
 
         InitializeManager.Instance.StopAiPollution();
 
-        currentState = State.Noise;
         SetNoiseEffects.Instance.InitNoiseScene();
     }
 
     IEnumerator InitializeScene()
     {
-        currentState = State.Introduction;
         yield return new WaitForSeconds(3);
 
         audioSource.Stop();
@@ -110,16 +123,6 @@ public class SpeechToMove : MonoBehaviour
 
     public void StartToMove()
     {
-        if (!isPalmUp)
-        {
-            Debug.Log("Your palm is not placed correctly!");
-            audioSource.Stop();
-            audioSource.PlayOneShot(audioClips[2]);
-            textAnimator.TypeText("Please, keep your palm facing up!");
-            julieCalled = false;
-            return;
-        }
-
         constraintPalmUp.UpdateLinkedTransform = false;
         StartCoroutine(CoStartToMove());
     }
@@ -159,7 +162,6 @@ public class SpeechToMove : MonoBehaviour
         textAnimator.TypeText("Alright!");
         interactable.IsEnabled = false;
 
-        currentState = State.AirQuality;
         InitializeManager.Instance.Init();
     }
 
@@ -174,6 +176,19 @@ public class SpeechToMove : MonoBehaviour
         handTracker.TrackedHandedness = Handedness.Both;
         handTracker.TrackedHandJoint = TrackedHandJoint.Palm;
         handTracker.UpdateSolvers = true;
+    }
+
+    void OnDialogueTriggerHandler(DialogueScriptableObject dialogue)
+    {
+        if (dialogue.DialogueKey.Keyword != Keyword.Julie)
+            return;
+        else if(isPalmUp)
+            StartToMove();
+    }
+
+    private void OnStateChangeHandler(State state)
+    {
+        currentState = state;
     }
 }
 

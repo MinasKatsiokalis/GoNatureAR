@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 715e33f4352c9504298160de11462ccf, type: 3}
-  m_Name: Dialogue_Intro_2
+  m_Name: Dialogue_PalmNotUp
   m_EditorClassIdentifier: 
   DialogueKey:
-    chapter: 65
-    section: 1
-  Text: 
-  AudioClip: {fileID: 0}
+    State: 0
+    Keyword: 1
+  Text: Please, keep your palm facing up.
+  AudioClip: {fileID: 8300000, guid: d815799d8f06b4e41ae41094b7ee73ea, type: 3}

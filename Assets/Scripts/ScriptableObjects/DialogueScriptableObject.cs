@@ -22,7 +22,13 @@ public class DialogueScriptableObject : ScriptableObject
 public struct DialogueKey 
 {
     public State State;
-    public string Keyword;
+    public Keyword Keyword;
+
+    public DialogueKey(State state, Keyword keyword)
+    {
+        State = state;
+        Keyword = keyword;
+    }
 
     public override bool Equals(object obj)
     {

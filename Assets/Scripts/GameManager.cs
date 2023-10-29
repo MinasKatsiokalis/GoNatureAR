@@ -53,13 +53,3 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
-
-[Serializable]
-public enum State
-{
-    Introduction,
-    AirQuality,
-    Noise,
-    Temperature,
-    Outro
-}
