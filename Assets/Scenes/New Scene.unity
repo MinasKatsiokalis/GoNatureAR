@@ -325,7 +325,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1251419387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,7 +460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.5058824}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -493,9 +493,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1617882946}
-  - component: {fileID: 1617882950}
   - component: {fileID: 1617882949}
   - component: {fileID: 1617882947}
+  - component: {fileID: 1617882948}
   - component: {fileID: 1617882945}
   m_Layer: 0
   m_Name: GameObject
@@ -517,8 +517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 2038813048}
-  characterDelay: 0.01
-  audioSource: {fileID: 1617882950}
+  characterDelay: 0.05
   palmUp: 0
 --- !u!4 &1617882946
 Transform:
@@ -551,20 +550,7 @@ MonoBehaviour:
   persistentKeywords: 0
   speechConfirmationTooltipPrefab: {fileID: 8046114618238072051, guid: 271778f6c957b524981067a81d238394,
     type: 3}
---- !u!114 &1617882949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1617882944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7723ab81da4b76141b6cab1f353a2ac9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _narrationSequence: {fileID: 11400000, guid: b919727b56c1d1147b5326188e97b1ef, type: 2}
---- !u!82 &1617882950
+--- !u!82 &1617882948
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -660,6 +646,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1617882949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617882944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7723ab81da4b76141b6cab1f353a2ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _narrationSequence: {fileID: 11400000, guid: b919727b56c1d1147b5326188e97b1ef, type: 2}
 --- !u!1 &1633907736
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,8 +1226,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

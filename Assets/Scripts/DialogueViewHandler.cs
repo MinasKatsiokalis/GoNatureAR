@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class DialogueViewHandler : MonoBehaviour
 {
     [SerializeField]
     private TMP_Text textMeshPro;
     [SerializeField]
     private float characterDelay;
-    [SerializeField]
+
     private AudioSource audioSource;
 
     private Coroutine currentCoroutine;
@@ -23,6 +24,11 @@ public class DialogueViewHandler : MonoBehaviour
     private void OnDisable()
     {
         NarrationManager.OnDialogueTrigger -= OnDialogueTriggerHandler;
+    }
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnDialogueTriggerHandler(DialogueScriptableObject dialogue)

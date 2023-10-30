@@ -20,5 +20,5 @@ MonoBehaviour:
     Together, we shall take a journey into the world of GoNature
     AR.
 
-    When you are ready say "Let''s go"!'
+    When you are ready say <b>"Let''s go"</b>!'
   AudioClip: {fileID: 8300000, guid: 60a2f96c2f007e34a9fe85fc4579d7a7, type: 3}
