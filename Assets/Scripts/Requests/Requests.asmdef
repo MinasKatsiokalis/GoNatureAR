@@ -1,0 +1,16 @@
+{
+    "name": "Requests",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e5386e80d12ad284ca98177469fd447d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

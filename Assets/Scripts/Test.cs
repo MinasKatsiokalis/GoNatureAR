@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using GoNatureAR.Requests;
+using Newtonsoft.Json.Linq;
 
 public class Test : MonoBehaviour
 {
     // Start is called before the first frame update
-    private string sensor = "urn:ngsi-ld:synetica-enl-air-x:synetica-enl-air-x-004815";
+    //private string sensor = "urn:ngsi-ld:synetica-enl-air-x:synetica-enl-air-x-004815";
+
+    [SerializeField]
+    Pilot pilot;
     void Start()
     {
         // Example concentration values
@@ -20,14 +25,26 @@ public class Test : MonoBehaviour
         // Calculate the EU-AQI
         
         Debug.Log(AirQualityCalculator.CalculateEU_AQI(PM2_5, PM10, NO2, O3, CO2));
-        PilotAuthentication(Pilot.castelfranco_veneto.ToString());
+        PilotAuthentication(pilot);
 
     }
-    async void PilotAuthentication(string pilot)
+    async void PilotAuthentication(Pilot pilot)
     {
-        string accessToken = await AuthenticationManager.GetAccessToken(pilot);
-        AuthenticationManager.GetData(accessToken, pilot);
-        AuthenticationManager.GetSensorData(accessToken, pilot, sensor);
+        await AuthenticationManager.RequestAccessToken(pilot, AccessTokenRecieved, (message) => { Debug.Log(message); });
+        //AuthenticationManager.GetSensorData(accessToken, pilot, sensor);
     }
 
+    async void AccessTokenRecieved(string accessToken)
+    {
+        Debug.Log(accessToken);
+        PilotDataRequest pilotDataRequest = new PilotDataRequest(accessToken, pilot);
+
+        Debug.Log(pilotDataRequest.URL);
+        Response response = await pilotDataRequest.ExecuteDataRequest();
+
+        foreach (JObject item in response.ResponseData)
+        {
+            Debug.Log(item["entityId"].ToString());
+        }
+    }
 }

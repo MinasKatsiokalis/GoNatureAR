@@ -1,19 +1,20 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Narration", menuName = "Narration/NarrationSequence")]
-public class NarrationScriptableObject : ScriptableObject
+namespace GoNatureAR
 {
-    public DialogueScriptableObject[] dialogues;
-
-    public DialogueScriptableObject GetDialogueByKey(DialogueKey key)
+    [CreateAssetMenu(fileName = "Narration", menuName = "Narration/NarrationSequence")]
+    public class NarrationScriptableObject : ScriptableObject
     {
-        foreach (var dialogue in dialogues)
+        public DialogueScriptableObject[] dialogues;
+
+        public DialogueScriptableObject GetDialogueByKey(DialogueKey key)
         {
-            if (dialogue.DialogueKey.Equals(key))
+            foreach (var dialogue in dialogues)
             {
-                return dialogue;
+                if (dialogue.DialogueKey.Equals(key))
+                    return dialogue;
             }
+            return null;
         }
-        return null;
     }
 }

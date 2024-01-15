@@ -1,80 +1,82 @@
 using Microsoft.MixedReality.Toolkit.Input;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
-using static SpeechProfile;
+using static GoNatureAR.SpeechProfile;
 
-[RequireComponent(typeof(SpeechInputHandler))]
-public class NarrationManager : MonoBehaviour
+namespace GoNatureAR
 {
-    public static NarrationManager Instance { get; private set; }
-
-    public static event Action<DialogueScriptableObject> OnDialogueTrigger;
-
-    [SerializeField]
-    private NarrationScriptableObject _narrationSequence;
-
-    private SpeechInputHandler speechInputHandler;
-    private DialogueKey currentDialogueKey;
-
-    private void Awake()
+    [RequireComponent(typeof(SpeechInputHandler))]
+    public class NarrationManager : MonoBehaviour
     {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(this);
-    }
+        public static NarrationManager Instance { get; private set; }
 
-    private void OnEnable() 
-    {
-        GameManager.OnChangeState += OnChangeStateHandler;
-    }
+        public static event Action<DialogueScriptableObject> OnDialogueTrigger;
 
-    private void OnDisable()
-    {
-        GameManager.OnChangeState -= OnChangeStateHandler;
-    }
+        [SerializeField]
+        private NarrationScriptableObject _narrationSequence;
 
-    private void Start()
-    {
-        speechInputHandler = GetComponent<SpeechInputHandler>();
-        speechInputHandler.AddResponse(GetKeywordToString(Keyword.Julie), () => GetDialogue(Keyword.Julie));
-        speechInputHandler.AddResponse(GetKeywordToString(Keyword.Continue), () => GetDialogue(Keyword.Continue));
-        speechInputHandler.AddResponse(GetKeywordToString(Keyword.Yes), () => GetDialogue(Keyword.Yes));
-        speechInputHandler.AddResponse(GetKeywordToString(Keyword.LetsGo), () => GetDialogue(Keyword.LetsGo));
-    }
+        private SpeechInputHandler speechInputHandler;
+        private DialogueKey currentDialogueKey;
 
-    void OnChangeStateHandler(State state)
-    {
-        switch (state)
+        private void Awake()
         {
-            case State.Introduction:
-                currentDialogueKey.State = State.Introduction;
-                GetDialogue(Keyword.Intro);
-                break;
-            case State.AirQuality:
-                currentDialogueKey.State = State.AirQuality;
-                break;
-            case State.Noise:
-                currentDialogueKey.State = State.Noise;
-                break;
-            case State.Temperature:
-                currentDialogueKey.State = State.Temperature;
-                break;
-            case State.Outro:
-                currentDialogueKey.State = State.Outro;
-                break;
+            if (Instance == null)
+                Instance = this;
+            else
+                Destroy(this);
         }
-    }
 
-    void GetDialogue(Keyword keyword)
-    {
-        currentDialogueKey.Keyword = keyword;
-        OnDialogueTrigger?.Invoke(_narrationSequence.GetDialogueByKey(currentDialogueKey));
-    }
+        private void OnEnable()
+        {
+            GameManager.OnChangeState += OnChangeStateHandler;
+        }
 
-    public void GetPalmNotUpDialogue()
-    {
-        OnDialogueTrigger?.Invoke(_narrationSequence.GetDialogueByKey(new DialogueKey(State.Introduction, Keyword.Palm)));
+        private void OnDisable()
+        {
+            GameManager.OnChangeState -= OnChangeStateHandler;
+        }
+
+        private void Start()
+        {
+            speechInputHandler = GetComponent<SpeechInputHandler>();
+            speechInputHandler.AddResponse(GetKeywordToString(Keyword.Julie), () => GetDialogue(Keyword.Julie));
+            speechInputHandler.AddResponse(GetKeywordToString(Keyword.Continue), () => GetDialogue(Keyword.Continue));
+            speechInputHandler.AddResponse(GetKeywordToString(Keyword.Yes), () => GetDialogue(Keyword.Yes));
+            speechInputHandler.AddResponse(GetKeywordToString(Keyword.LetsGo), () => GetDialogue(Keyword.LetsGo));
+        }
+
+        private void OnChangeStateHandler(State state)
+        {
+            switch (state)
+            {
+                case State.Introduction:
+                    currentDialogueKey.State = State.Introduction;
+                    GetDialogue(Keyword.Intro);
+                    break;
+                case State.AirQuality:
+                    currentDialogueKey.State = State.AirQuality;
+                    break;
+                case State.Noise:
+                    currentDialogueKey.State = State.Noise;
+                    break;
+                case State.Temperature:
+                    currentDialogueKey.State = State.Temperature;
+                    break;
+                case State.Outro:
+                    currentDialogueKey.State = State.Outro;
+                    break;
+            }
+        }
+
+        private void GetDialogue(Keyword keyword)
+        {
+            currentDialogueKey.Keyword = keyword;
+            OnDialogueTrigger?.Invoke(_narrationSequence.GetDialogueByKey(currentDialogueKey));
+        }
+
+        public void GetPalmNotUpDialogue()
+        {
+            OnDialogueTrigger?.Invoke(_narrationSequence.GetDialogueByKey(new DialogueKey(State.Introduction, Keyword.Palm)));
+        }
     }
 }
