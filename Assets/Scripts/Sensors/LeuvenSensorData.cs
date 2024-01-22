@@ -14,18 +14,18 @@ namespace GoNatureAR.Sensors
         public LeuvenSensorData()
         {
             AirQualityData = new AirQuality();
-            AirQualityData.Measurements = new AirQualityMeasure[]
+            AirQualityData.Measurements = new AirQualityMeasurements[]
             {
-                    AirQualityMeasure.pm10_0,
-                    AirQualityMeasure.pm2_5,
-                    AirQualityMeasure.pm1_0
+                    AirQualityMeasurements.pm10_0,
+                    AirQualityMeasurements.pm2_5,
+                    AirQualityMeasurements.pm1_0
             };
 
             ThermalComfortData = new ThermalComfort();
-            ThermalComfortData.Measurements = new ThermalComfortMeasure[]
+            ThermalComfortData.Measurements = new ThermalComfortMeasurements[]
             {
-                    ThermalComfortMeasure.airTemperature,
-                    ThermalComfortMeasure.humidity
+                    ThermalComfortMeasurements.airTemperature,
+                    ThermalComfortMeasurements.humidity
             };
 
             NoiseData = new Noise();

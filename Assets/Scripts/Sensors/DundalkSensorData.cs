@@ -14,29 +14,29 @@ namespace GoNatureAR.Sensors
         public DundalkSensorData()
         {
             AirQualityData = new AirQuality();
-            AirQualityData.Measurements = new AirQualityMeasure[]
+            AirQualityData.Measurements = new AirQualityMeasurements[]
             {
-                    AirQualityMeasure.MassConcentrationPM10_0,
-                    AirQualityMeasure.MassConcentrationPM2_5,
-                    AirQualityMeasure.MassConcentrationPM1_0,
-                    AirQualityMeasure.MassConcentrationPM4_0,
-                    AirQualityMeasure.COugm3,
-                    AirQualityMeasure.NO2ugm3,
-                    AirQualityMeasure.SO2ugm3,
-                    AirQualityMeasure.CO2ppm
+                    AirQualityMeasurements.MassConcentrationPM10_0,
+                    AirQualityMeasurements.MassConcentrationPM2_5,
+                    AirQualityMeasurements.MassConcentrationPM1_0,
+                    AirQualityMeasurements.MassConcentrationPM4_0,
+                    AirQualityMeasurements.COugm3,
+                    AirQualityMeasurements.NO2ugm3,
+                    AirQualityMeasurements.SO2ugm3,
+                    AirQualityMeasurements.CO2ppm
             };
 
             ThermalComfortData = new ThermalComfort();
-            ThermalComfortData.Measurements = new ThermalComfortMeasure[]
+            ThermalComfortData.Measurements = new ThermalComfortMeasurements[]
             {
-                    ThermalComfortMeasure.airTemperature,
-                    ThermalComfortMeasure.humidity
+                    ThermalComfortMeasurements.airTemperature,
+                    ThermalComfortMeasurements.humidity
             };
 
             NoiseData = new Noise();
-            NoiseData.Measurements = new NoiseMeasure[]
+            NoiseData.Measurements = new NoiseMeasurements[]
             {
-                    NoiseMeasure.sounddB
+                    NoiseMeasurements.sounddB
             };
         }
     }

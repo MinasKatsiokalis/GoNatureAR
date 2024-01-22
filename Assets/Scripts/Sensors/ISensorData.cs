@@ -15,22 +15,22 @@ namespace GoNatureAR.Sensors
     [Serializable]
     public class AirQuality
     {
-        public AirQualityMeasure[] Measurements;
+        public AirQualityMeasurements[] Measurements;
     }
 
     [Serializable]
     public class ThermalComfort
     {
-        public ThermalComfortMeasure[] Measurements;
+        public ThermalComfortMeasurements[] Measurements;
     }
 
     public class Noise
     {
-        public NoiseMeasure[] Measurements;
+        public NoiseMeasurements[] Measurements;
     }
 
     [Serializable]
-    public enum AirQualityMeasure
+    public enum AirQualityMeasurements
     {
         MassConcentrationPM10_0,
         MassConcentrationPM2_5,
@@ -53,14 +53,14 @@ namespace GoNatureAR.Sensors
     }
 
     [Serializable]
-    public enum ThermalComfortMeasure
+    public enum ThermalComfortMeasurements
     {
         airTemperature,
         humidity
     }
 
     [Serializable]
-    public enum NoiseMeasure
+    public enum NoiseMeasurements
     {
         sounddB,
         dba_max,

@@ -14,25 +14,25 @@ namespace GoNatureAR.Sensors
         public ChaniaSensorData()
         {
             AirQualityData = new AirQuality();
-            AirQualityData.Measurements = new AirQualityMeasure[]
+            AirQualityData.Measurements = new AirQualityMeasurements[]
             {
-                    AirQualityMeasure.MassConcentrationPM10_0,
-                    AirQualityMeasure.MassConcentrationPM2_5,
-                    AirQualityMeasure.MassConcentrationPM1_0,
-                    AirQualityMeasure.CL2ppm,
-                    AirQualityMeasure.CO2ppm,
-                    AirQualityMeasure.COppm,
-                    AirQualityMeasure.NH3ppm,
-                    AirQualityMeasure.NO2ppm,
-                    AirQualityMeasure.Noppm,
-                    AirQualityMeasure.SO2ppm
+                    AirQualityMeasurements.MassConcentrationPM10_0,
+                    AirQualityMeasurements.MassConcentrationPM2_5,
+                    AirQualityMeasurements.MassConcentrationPM1_0,
+                    AirQualityMeasurements.CL2ppm,
+                    AirQualityMeasurements.CO2ppm,
+                    AirQualityMeasurements.COppm,
+                    AirQualityMeasurements.NH3ppm,
+                    AirQualityMeasurements.NO2ppm,
+                    AirQualityMeasurements.Noppm,
+                    AirQualityMeasurements.SO2ppm
             };
 
             ThermalComfortData = new ThermalComfort();
-            ThermalComfortData.Measurements = new ThermalComfortMeasure[]
+            ThermalComfortData.Measurements = new ThermalComfortMeasurements[]
             {
-                    ThermalComfortMeasure.airTemperature,
-                    ThermalComfortMeasure.humidity
+                    ThermalComfortMeasurements.airTemperature,
+                    ThermalComfortMeasurements.humidity
             };
 
             NoiseData = new Noise();

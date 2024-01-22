@@ -16,10 +16,10 @@ namespace GoNatureAR.Sensors
             AirQualityData = new AirQuality();
 
             ThermalComfortData = new ThermalComfort();
-            ThermalComfortData.Measurements = new ThermalComfortMeasure[]
+            ThermalComfortData.Measurements = new ThermalComfortMeasurements[]
             {
-                    ThermalComfortMeasure.airTemperature,
-                    ThermalComfortMeasure.humidity
+                    ThermalComfortMeasurements.airTemperature,
+                    ThermalComfortMeasurements.humidity
             };
 
             NoiseData = new Noise();

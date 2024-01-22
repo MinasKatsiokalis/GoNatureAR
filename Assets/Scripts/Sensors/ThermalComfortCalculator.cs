@@ -19,9 +19,9 @@ namespace GoNatureAR.Sensors
 
             if (PMV <= 1 && PMV >= -1)
                 Debug.Log("Normal");
-            else if (PMV > 1)
+            else if (PMV > 1.5)
                 Debug.Log("Hot");
-            else if(PMV < -1)
+            else if(PMV < -1.5)
                 Debug.Log("Cold");
 
         }
@@ -31,9 +31,9 @@ namespace GoNatureAR.Sensors
         /// Parameters
         /// -----------
         /// tdb : float or array-like dry bulb air temperature, default in [°C]
-        /// tr : float or array-like mean radiant temperature, default in [°C]
-        /// vr : float or array-like relative air speed, default in [m/s]
-        /// rh : float or array-like relative humidity, [%]
+        /// tr  : float or array-like mean radiant temperature, default in [°C]
+        /// vr  : float or array-like relative air speed, default in [m/s]
+        /// rh  : float or array-like relative humidity, [%]
         /// met : float or array-like metabolic rate, [met]
         /// clo : float or array-like clothing insulation, [clo]
         /// wme : float or array-like external work, [met] default 0

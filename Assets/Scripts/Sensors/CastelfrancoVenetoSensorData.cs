@@ -14,27 +14,27 @@ namespace GoNatureAR.Sensors
         public CastelfrancoVenetoSensorData()
         {
             AirQualityData = new AirQuality();
-            AirQualityData.Measurements = new AirQualityMeasure[]
+            AirQualityData.Measurements = new AirQualityMeasurements[]
             {
-                    AirQualityMeasure.MassConcentrationPM10_0,
-                    AirQualityMeasure.MassConcentrationPM2_5,
-                    AirQualityMeasure.MassConcentrationPM1_0,
-                    AirQualityMeasure.MassConcentrationPM4_0
+                    AirQualityMeasurements.MassConcentrationPM10_0,
+                    AirQualityMeasurements.MassConcentrationPM2_5,
+                    AirQualityMeasurements.MassConcentrationPM1_0,
+                    AirQualityMeasurements.MassConcentrationPM4_0
             };
 
             ThermalComfortData = new ThermalComfort();
-            ThermalComfortData.Measurements = new ThermalComfortMeasure[]
+            ThermalComfortData.Measurements = new ThermalComfortMeasurements[]
             {
-                    ThermalComfortMeasure.airTemperature,
-                    ThermalComfortMeasure.humidity
+                    ThermalComfortMeasurements.airTemperature,
+                    ThermalComfortMeasurements.humidity
             };
 
             NoiseData = new Noise();
-            NoiseData.Measurements = new NoiseMeasure[]
+            NoiseData.Measurements = new NoiseMeasurements[]
             {
-                    NoiseMeasure.LAEQ,
-                    NoiseMeasure.dba_min,
-                    NoiseMeasure.dba_max,
+                    NoiseMeasurements.LAEQ,
+                    NoiseMeasurements.dba_min,
+                    NoiseMeasurements.dba_max,
             };
         }
     }

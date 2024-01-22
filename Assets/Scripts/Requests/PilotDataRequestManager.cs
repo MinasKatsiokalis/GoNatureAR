@@ -18,7 +18,7 @@ namespace GoNatureAR.Requests
         public bool isCanceled = false;
 
         private string accessToken;
-        private TimeSpan expiresIn = new TimeSpan(0, 30, 0);
+        private TimeSpan expiresIn = new TimeSpan(0, 55, 0);
         private DateTime accessTokenStart;
 
         private CancellationTokenSource tokenSource;
@@ -46,12 +46,12 @@ namespace GoNatureAR.Requests
             var airAverageData = new Dictionary<EnumKey, double?>();
             var noiseAverageData = new Dictionary<EnumKey, double?>();
 
-            CancellationToken ct = tokenSource.Token;
+            CancellationToken cancellationTokent = tokenSource.Token;
             try
             {
-                //airAverageData = await RequestData(pilot, SensorType.air, ct);
-                thermalAverageData = await RequestData(pilot, SensorType.thermal, ct);
-                //noiseAverageData = await RequestData(pilot, SensorType.noise, ct);
+                //airAverageData = await RequestData(pilot, SensorType.air, cancellationTokent);
+                thermalAverageData = await RequestData(pilot, SensorType.thermal, cancellationTokent);
+                //noiseAverageData = await RequestData(pilot, SensorType.noise, cancellationTokent);
             }
             catch (OperationCanceledException)
             {
@@ -60,8 +60,8 @@ namespace GoNatureAR.Requests
 
             ThermalComfortCalculator thermalComfortCalculator = new ThermalComfortCalculator
             (
-                (double)thermalAverageData[new EnumKey(ThermalComfortMeasure.airTemperature)],
-                (double)thermalAverageData[new EnumKey(ThermalComfortMeasure.humidity)]
+                (double)thermalAverageData[new EnumKey(ThermalComfortMeasurements.airTemperature)],
+                (double)thermalAverageData[new EnumKey(ThermalComfortMeasurements.humidity)]
             );
             Debug.Log ($"PMV: {thermalComfortCalculator.PMV}, PPD: {thermalComfortCalculator.PPD}%");
         }
@@ -350,7 +350,7 @@ public class EnumKey
 
     public EnumKey(object enumValue)
     {
-        if (!(enumValue is ThermalComfortMeasure || enumValue is AirQualityMeasure || enumValue is NoiseMeasure))
+        if (!(enumValue is ThermalComfortMeasurements || enumValue is AirQualityMeasurements || enumValue is NoiseMeasurements))
             throw new ArgumentException("Invalid enum type");
 
         this.enumValue = enumValue;
