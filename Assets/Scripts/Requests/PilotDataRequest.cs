@@ -5,55 +5,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Security.Policy;
+using System.Linq;
 
 namespace GoNatureAR.Requests
 {
     public class PilotDataRequest : Request
     {
-        private Pilot pilot;
-
-        private const string _domain = ".varcities.eu/v2/entities";
-        private const string _prefix = "https://varcities-api.";
-        private string pilotName;
-        private string url;
-        public string URL
+        public PilotDataRequest(string token, Pilot pilot, string sensorType) : base(PrepareUrl(pilot,sensorType), Method.GET)
         {
-            get { return url; }
-            set { url = value; }
+            AddHeaders(token);
         }
 
-        public Request Request;
-
-        public PilotDataRequest(string token, Pilot pilot)
-        {   
-            this.pilot = pilot;
-            this.pilotName = pilot.ToString().Replace("_", "-");
-            this.url = $"{_prefix}{pilotName}{_domain}";
-
-            RestClient = new RestClient(url);
-            RestClient.Timeout = -1;
-            RestClient.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
-
-            RestRequest = new RestRequest(Method.GET);
+        private void AddHeaders(string token)
+        {
             RestRequest.AddHeader("Fiware-Service", "openiot");
             RestRequest.AddHeader("X-Auth-Token", token);
             RestRequest.AddHeader("Fiware-ServicePath", "/");
         }
 
-        public async Task<Response> ExecuteDataRequest()
+        private static string PrepareUrl(Pilot pilot, string sensorType)
         {
-            Response response = new Response();
-            response.RestResponse = await RestClient.ExecuteAsync(RestRequest);
+            var domain = $".varcities.eu/v2/types/{sensorType}/value?&lastN=10";
+            var prefix = "https://varcities-api.";
 
-            JArray jsonArray = JArray.Parse(response.RestResponse.Content);
-            JObject[] data = new JObject[jsonArray.Count];
+            var pilotName = pilot.ToString().Replace("_", "-");
+            string url = $"{prefix}{pilotName}{domain}";
 
-            for(int i= 0; i<jsonArray.Count;i++)
-                data[i] = (JObject)jsonArray[i];
-
-            response.ResponseData = data;
-
-            return response;
+            if (pilot == Pilot.gzira)
+            {
+                domain = $"213.165.170.189:1030/v2/types/{sensorType}/value?&lastN=10";
+                prefix = "https://";
+                url = $"{prefix}{domain}";
+            }
+            return url ;
         }
+ 
     }
 }

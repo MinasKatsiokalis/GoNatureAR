@@ -9,6 +9,6 @@ namespace GoNatureAR.Requests
     public interface IResponse
     {
         public IRestResponse RestResponse { get; set; }
-        public JObject[] ResponseData { get; set; }
+        public string ResponseData { get; set; }
     }
 }

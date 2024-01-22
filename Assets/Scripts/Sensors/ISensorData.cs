@@ -7,26 +7,26 @@ namespace GoNatureAR.Sensors
 {
     public interface ISensorData
     {
-        AirQuality AirQualityData { set; get; }
-        ThermalComfort ThermalComfortData { set; get; }
-        Noise NoiseData { set; get; }
+        public AirQuality AirQualityData { get; }
+        public ThermalComfort ThermalComfortData { get; }
+        public Noise NoiseData { get; }
     }
 
     [Serializable]
     public class AirQuality
     {
-        public AirQualityMeasure[] Measures;
+        public AirQualityMeasure[] Measurements;
     }
 
     [Serializable]
     public class ThermalComfort
     {
-        public ThermalComfortMeasure[] Measures;
+        public ThermalComfortMeasure[] Measurements;
     }
 
     public class Noise
     {
-        public NoiseMeasure[] Measures;
+        public NoiseMeasure[] Measurements;
     }
 
     [Serializable]
@@ -49,6 +49,7 @@ namespace GoNatureAR.Sensors
         COugm3,
         NO2ugm3,
         SO2ugm3,
+        O3ppb
     }
 
     [Serializable]
@@ -61,6 +62,9 @@ namespace GoNatureAR.Sensors
     [Serializable]
     public enum NoiseMeasure
     {
-        sounddB
+        sounddB,
+        dba_max,
+        dba_min,
+        LAEQ
     }
 }

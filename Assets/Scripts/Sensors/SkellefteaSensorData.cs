@@ -7,30 +7,22 @@ namespace GoNatureAR.Sensors
 {
     public class SkellefteaSensorData : ISensorData
     {
-        public AirQuality AirQualityData
-        {
-            get { return AirQualityData; }
-            set { AirQualityData = new AirQuality(); }
-        }
+        public AirQuality AirQualityData { get; }
+        public ThermalComfort ThermalComfortData { get; }
+        public Noise NoiseData { get; }
 
-        public ThermalComfort ThermalComfortData
+        public SkellefteaSensorData()
         {
-            get { return ThermalComfortData; }
-            set
+            AirQualityData = new AirQuality();
+
+            ThermalComfortData = new ThermalComfort();
+            ThermalComfortData.Measurements = new ThermalComfortMeasure[]
             {
-                ThermalComfortData = new ThermalComfort();
-                ThermalComfortData.Measures = new ThermalComfortMeasure[]
-                {
                     ThermalComfortMeasure.airTemperature,
                     ThermalComfortMeasure.humidity
-                };
-            }
-        }
+            };
 
-        public Noise NoiseData
-        {
-            get { return NoiseData; }
-            set { NoiseData = new Noise(); }
+            NoiseData = new Noise();
         }
     }
 }

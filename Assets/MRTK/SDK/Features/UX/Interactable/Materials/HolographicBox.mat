@@ -56,11 +56,11 @@ Material:
     - _ClippingPlane: 0
     - _ClippingSphere: 0
     - _ColorWriteMask: 15
-    - _CullMode: 2
+    - _CullMode: 0
     - _CustomMode: 2
     - _Cutoff: 0.5
     - _DirectionalLight: 0
-    - _DstBlend: 1
+    - _DstBlend: 10
     - _EdgeSmoothingValue: 0.002
     - _EnableChannelMap: 0
     - _EnableEmission: 0
@@ -74,8 +74,8 @@ Material:
     - _EnvironmentColorThreshold: 1.5
     - _EnvironmentColoring: 0
     - _FadeBeginDistance: 10
-    - _FadeCompleteDistance: 0.1
-    - _FadeMinValue: 0
+    - _FadeCompleteDistance: 0
+    - _FadeMinValue: 0.7
     - _FluentLightIntensity: 1
     - _HoverLight: 1
     - _IgnoreZScale: 0
@@ -89,7 +89,7 @@ Material:
     - _IridescenceThreshold: 0.05
     - _Metallic: 0
     - _MipmapBias: -2
-    - _Mode: 4
+    - _Mode: 3
     - _NearLightFade: 0
     - _NearPlaneFade: 1
     - _NormalMapScale: 1
@@ -105,7 +105,7 @@ Material:
     - _RoundCornerMargin: 0.01
     - _RoundCornerRadius: 0.25
     - _RoundCorners: 0
-    - _Smoothness: 0.5
+    - _Smoothness: 0.641
     - _SpecularHighlights: 0
     - _SphericalHarmonics: 0
     - _SrcBlend: 1
@@ -124,7 +124,7 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _ClippingBorderColor: {r: 1, g: 0.2, b: 0, a: 1}
-    - _Color: {r: 0.19747724, g: 0.16353685, b: 0.1981132, a: 1}
+    - _Color: {r: 0.3371013, g: 0.18943574, b: 0.4056604, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
     - _EnvironmentColorX: {r: 1, g: 0, b: 0, a: 1}
     - _EnvironmentColorY: {r: 0, g: 1, b: 0, a: 1}

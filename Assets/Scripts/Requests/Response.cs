@@ -16,8 +16,8 @@ namespace GoNatureAR.Requests
             set { restResponse = value; }
         }
 
-        private JObject[] responseData;
-        public JObject[] ResponseData
+        private string responseData;
+        public string ResponseData
         {
             get { return responseData; }
             set { responseData = value; }
