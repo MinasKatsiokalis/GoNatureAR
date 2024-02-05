@@ -81,7 +81,7 @@ Material:
     - _IgnoreZScale: 0
     - _IndependentCorners: 0
     - _InnerGlow: 1
-    - _InnerGlowPower: 6.7
+    - _InnerGlowPower: 3.2
     - _InstancedColor: 0
     - _Iridescence: 1
     - _IridescenceAngle: -0.78
@@ -103,7 +103,7 @@ Material:
     - _RimLight: 0
     - _RimPower: 0.25
     - _RoundCornerMargin: 0.01
-    - _RoundCornerRadius: 0.25
+    - _RoundCornerRadius: 0
     - _RoundCorners: 0
     - _Smoothness: 0.641
     - _SpecularHighlights: 0
@@ -130,7 +130,7 @@ Material:
     - _EnvironmentColorY: {r: 0, g: 1, b: 0, a: 1}
     - _EnvironmentColorZ: {r: 0, g: 0, b: 1, a: 1}
     - _HoverColorOverride: {r: 1, g: 1, b: 1, a: 1}
-    - _InnerGlowColor: {r: 0.9249055, g: 0.8306337, b: 0.9622642, a: 0.9411765}
+    - _InnerGlowColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0.9411765}
     - _ProximityLightCenterColorOverride: {r: 1, g: 0, b: 0, a: 0}
     - _ProximityLightMiddleColorOverride: {r: 0, g: 1, b: 0, a: 0.5}
     - _ProximityLightOuterColorOverride: {r: 0, g: 0, b: 1, a: 1}

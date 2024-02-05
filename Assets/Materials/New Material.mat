@@ -120,7 +120,7 @@ Material:
     - _ColorMode: 0
     - _ColorWriteMask: 15
     - _Cull: 2
-    - _CullMode: 2
+    - _CullMode: 0
     - _CustomMode: 0
     - _Cutoff: 0.87
     - _DetailAlbedoMapScale: 1
