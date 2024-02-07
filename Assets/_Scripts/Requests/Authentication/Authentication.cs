@@ -1,10 +1,4 @@
 using RestSharp;
-using System.Threading.Tasks;
-using UnityEngine;
-using Newtonsoft.Json.Linq;
-using System;
-using GoNatureAR;
-using UnityEditor.PackageManager.Requests;
 
 namespace GoNatureAR.Requests
 {

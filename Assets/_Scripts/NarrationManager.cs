@@ -39,6 +39,7 @@ namespace GoNatureAR
         private void Start()
         {
             speechInputHandler = GetComponent<SpeechInputHandler>();
+
             speechInputHandler.AddResponse(GetKeywordToString(Keyword.Julie), () => GetDialogue(Keyword.Julie));
             speechInputHandler.AddResponse(GetKeywordToString(Keyword.Continue), () => GetDialogue(Keyword.Continue));
             speechInputHandler.AddResponse(GetKeywordToString(Keyword.Yes), () => GetDialogue(Keyword.Yes));

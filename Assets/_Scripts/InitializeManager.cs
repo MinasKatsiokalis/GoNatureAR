@@ -65,10 +65,6 @@ namespace GoNatureAR
                 "I should tell you that I have the ability to sense the air quality of the environment!\n" +
                 "Do you wanna see the air through me eyes?");
 
-            SpeechToMove.Instance.interactableButton.OnClick.RemoveAllListeners();
-            SpeechToMove.Instance.interactableButton.OnClick.AddListener(SpeechToMove.Instance.ResponseToYes);
-            SpeechToMove.Instance.interactableButtonText.text = "Yes";
-            SpeechToMove.Instance.interactable.IsEnabled = true;
 
         }
 
@@ -135,11 +131,6 @@ namespace GoNatureAR
             textAnimator.TypeText("I haven't show you yet all my abilities...\n" +
                 "My hearing is quite sensitive too. I want to show you, how your environment feels like to me.\n" +
                 "When you are ready to proceed, please say <b>\"Continue\"</b>");
-
-            SpeechToMove.Instance.interactableButton.OnClick.RemoveAllListeners();
-            SpeechToMove.Instance.interactableButton.OnClick.AddListener(SpeechToMove.Instance.ResponseToContinue);
-            SpeechToMove.Instance.interactableButtonText.text = "Continue";
-            SpeechToMove.Instance.interactable.IsEnabled = true;
 
         }
     }

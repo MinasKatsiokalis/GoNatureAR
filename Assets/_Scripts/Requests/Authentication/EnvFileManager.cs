@@ -2,14 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using Newtonsoft.Json;
-using RestSharp;
-using System;
-using System.Net;
-using System.Threading.Tasks;
-using UnityEngine.Networking;
-using System.Web;
-using Newtonsoft.Json.Linq;
 
 public class EnvFileManager : MonoBehaviour
 {
@@ -34,11 +26,14 @@ public class EnvFileManager : MonoBehaviour
     {
         Dictionary<string, string> env = new Dictionary<string, string>();
         string[] lines = File.ReadAllLines(path);
+        if(lines != null)
+            Debug.Log("File read successfully");
 
         foreach (string line in lines)
         {
             if (!string.IsNullOrWhiteSpace(line) && !line.StartsWith("#"))
-            {
+            {   
+                Debug.Log("Line: " + line);
                 string[] keyValue = line.Split(new[] { '=' }, 2);
                 if (keyValue.Length == 2)
                 {

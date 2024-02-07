@@ -12,30 +12,26 @@ namespace GoNatureAR
         private TMP_Text textMeshPro;
         [SerializeField]
         private float characterDelay;
-
+        
         private AudioSource audioSource;
-
         private Coroutine currentCoroutine;
 
         public bool palmUp = false;
         private void OnEnable()
         {
             NarrationManager.OnDialogueTrigger += OnDialogueTriggerHandler;
+            CompanionBehaviour.OnPalmUpDetected += OnPalmUpDetectedHandler;
         }
 
         private void OnDisable()
         {
             NarrationManager.OnDialogueTrigger -= OnDialogueTriggerHandler;
+            CompanionBehaviour.OnPalmUpDetected -= OnPalmUpDetectedHandler;
         }
 
         private void Awake()
         {
             audioSource = GetComponent<AudioSource>();
-        }
-
-        private void Start()
-        {
-
         }
 
         private void OnDialogueTriggerHandler(DialogueScriptableObject dialogue)
@@ -48,6 +44,11 @@ namespace GoNatureAR
                 Debug.Log(dialogue.AudioClip.name);
                 audioSource.PlayOneShot(dialogue.AudioClip);
             }
+        }
+
+        private void OnPalmUpDetectedHandler(bool isPalmUp)
+        {
+            palmUp = isPalmUp;
         }
 
         public void TypeText(string textToType)

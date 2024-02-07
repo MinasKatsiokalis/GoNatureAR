@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NewHololens2ConfigurationProfile
   m_EditorClassIdentifier: 
   isCustomProfile: 1
-  experienceSettingsProfile: {fileID: 11400000, guid: 1ccbb3b1d759d6a49b4161a958329d9d,
+  experienceSettingsProfile: {fileID: 11400000, guid: 043fafec7ec53f041b0537371c4c45ac,
     type: 2}
   targetExperienceScale: 3
   enableCameraSystem: 1

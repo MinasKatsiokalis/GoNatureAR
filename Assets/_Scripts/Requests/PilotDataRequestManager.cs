@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using GoNatureAR.Sensors;
-using GoNatureAR;
 using System;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Threading;
+
 namespace GoNatureAR.Requests
 {
     public class PilotDataRequestManager : MonoBehaviour
@@ -20,8 +19,6 @@ namespace GoNatureAR.Requests
         public static Action<Dictionary<EnumKey, double?>> OnAirDataRecieved;
         public static Action<Dictionary<EnumKey, double?>> OnNoiseDataRecieved;
         public static Action<string> OnError;
-
-        public bool isCanceled = false;
 
         private string accessToken;
         private Pilot currentPilot;
@@ -36,15 +33,6 @@ namespace GoNatureAR.Requests
                 Instance = this;
             else
                 Destroy(this.gameObject);
-        }
-
-        private void OnEnable()
-        {
-            
-        }
-
-        private void OnDisable()
-        {
         }
 
         public async Task SendRequestsForData(Pilot pilot)
@@ -76,14 +64,6 @@ namespace GoNatureAR.Requests
             }
 
             tokenSource.Dispose();
-        }
-
-        private void Update()
-        {
-            if (isCanceled && tokenSource != null)
-            {
-                tokenSource.Cancel();
-            }
         }
 
         /// <summary>

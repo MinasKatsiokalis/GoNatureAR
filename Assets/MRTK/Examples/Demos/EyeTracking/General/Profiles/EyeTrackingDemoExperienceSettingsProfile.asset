@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: EyeTrackingDemoExperienceSettingsProfile
   m_EditorClassIdentifier: 
   isCustomProfile: 1
-  targetExperienceScale: 4
+  targetExperienceScale: 3
   contentOffset: 0

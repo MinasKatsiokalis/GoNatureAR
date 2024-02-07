@@ -84,8 +84,8 @@ Material:
     - _BorderLightOpaqueAlpha: 1
     - _BorderLightReplacesAlbedo: 1
     - _BorderLightUsesHoverColor: 0
-    - _BorderMinValue: 0.8
-    - _BorderWidth: 1
+    - _BorderMinValue: 0.761
+    - _BorderWidth: 0.361
     - _BorderWidthHorizontal: 0.1
     - _BorderWidthVertical: 0.1
     - _BumpScale: 1
@@ -152,8 +152,8 @@ Material:
     - _RenderQueueOverride: -1
     - _RimLight: 0
     - _RimPower: 5.83
-    - _RoundCornerMargin: 0.5
-    - _RoundCornerRadius: 0.079
+    - _RoundCornerMargin: 0.098
+    - _RoundCornerRadius: 0.059
     - _RoundCorners: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0

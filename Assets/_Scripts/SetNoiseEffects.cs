@@ -67,10 +67,6 @@ namespace GoNatureAR
             companionAudioSource.PlayOneShot(companionAudioClip);
             textAnimator.TypeText("Look, this place is so nice and calm!\nCan you feel it too?");
 
-            SpeechToMove.Instance.interactableButton.OnClick.RemoveAllListeners();
-            SpeechToMove.Instance.interactableButton.OnClick.AddListener(SpeechToMove.Instance.ResponseToYes);
-            SpeechToMove.Instance.interactableButtonText.text = "Yes";
-            SpeechToMove.Instance.interactable.IsEnabled = true;
 
         }
         public void NoiseTransition()
