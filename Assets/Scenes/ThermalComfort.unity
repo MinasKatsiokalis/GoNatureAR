@@ -1858,7 +1858,7 @@ PrefabInstance:
     - target: {fileID: 102000010767390410, guid: e765e6ff063d7a54c8f7efa4da96fb52,
         type: 3}
       propertyPath: m_Alignment
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e765e6ff063d7a54c8f7efa4da96fb52, type: 3}

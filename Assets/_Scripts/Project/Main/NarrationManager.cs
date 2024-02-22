@@ -100,7 +100,7 @@ namespace GoNatureAR
                 return;
             }
 
-            if (currentDialogueKey.State == State.Temperature && currentDialogueKey.Keyword == Keyword.Continue)
+            if (keyword == Keyword.Continue && currentDialogueKey.State == State.Temperature)
             {
                 await Task.Delay(4000);
                 OnThermalSceneEnded?.Invoke();
@@ -117,6 +117,7 @@ namespace GoNatureAR
                 _pilotsPanel.SetActive(false);
                 await Task.Delay(6000);
                 OnIntroductionEnded?.Invoke();
+                return;
             }
 
             if (currentDialogueKey.State == State.Introduction && currentDialogueKey.Keyword == Keyword.LetsGo)
@@ -124,7 +125,9 @@ namespace GoNatureAR
                 _pilotsPanel.SetActive(true);
                 await Task.Delay(2000);
                 GetDialogue(Keyword.Select);
+                return;
             }
+
         }
         private void JulieCalled()
         {

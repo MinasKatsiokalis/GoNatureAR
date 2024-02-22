@@ -49,13 +49,16 @@ namespace GoNatureAR
         private void SetPanelBasedOnNoise(double noise)
         {
             var color = new NoiseColors();
+            var renderer = _noiseDetailsBackground.GetComponent<MeshRenderer>();
+
             if (noise > 55)
             {
                 noiseIndex = NoiseExposureIndex.Loud;
                 SetNoiseDetails(noiseIndex);
                 _noiseDetailsVFX.SetVector4("TrailsColor", NoiseColors.Color2Vector4(color.LoudTrails));
                 _noiseDetailsVFX.SetFloat("TrailsTurbulence", 1.5f);
-                _noiseDetailsBackground.GetComponent<MeshRenderer>().material.SetColor("_Color", color.LoudBackground);
+                renderer.material.SetColor("_Color", color.LoudBackground);
+                renderer.material.SetColor("_InnerGlowColor", color.LoudBackground);
             }
             else
             {
@@ -63,7 +66,8 @@ namespace GoNatureAR
                 SetNoiseDetails(noiseIndex);
                 _noiseDetailsVFX.SetVector4("TrailsColor", NoiseColors.Color2Vector4(color.FaintTrails));
                 _noiseDetailsVFX.SetFloat("TrailsTurbulence", 0f);
-                _noiseDetailsBackground.GetComponent<MeshRenderer>().material.SetColor("_Color", color.FaintBackground);
+                renderer.material.SetColor("_Color", color.FaintBackground);
+                renderer.material.SetColor("_InnerGlowColor", color.FaintBackground);
             }
 
             OnNoiseCalculated?.Invoke(noiseIndex);

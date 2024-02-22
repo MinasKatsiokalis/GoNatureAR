@@ -44,29 +44,20 @@ namespace GoNatureAR.Sensors
 
         public static AirQualityIndex GetAirQualityIndex(int AQI)
         {
-            if (AQI <= 0)
+            switch (AQI)
             {
-                return AirQualityIndex.Good;
-            }
-            else if (AQI <= 1)
-            {
-                return AirQualityIndex.Fair;
-            }
-            else if (AQI <= 2)
-            {
-                return AirQualityIndex.Moderate;
-            }
-            else if (AQI <= 3)
-            {
-                return AirQualityIndex.Poor;
-            }
-            else if (AQI <= 4)
-            {
-                return AirQualityIndex.Unhealthy;
-            }
-            else
-            {
-                return AirQualityIndex.Hazardous;
+                case int n when n <= 0:
+                    return AirQualityIndex.Good;
+                case int n when n <= 1:
+                    return AirQualityIndex.Fair;
+                case int n when n <= 2:
+                    return AirQualityIndex.Moderate;
+                case int n when n <= 3:
+                    return AirQualityIndex.Poor;
+                case int n when n <= 4:
+                    return AirQualityIndex.Unhealthy;
+                default:
+                    return AirQualityIndex.Hazardous;
             }
         }
     }

@@ -71,6 +71,7 @@ namespace GoNatureAR
                     OnChangeState?.Invoke(this.state);
                     break;
                 case State.AirQuality:
+                    this.state = state;
                     SceneManager.UnloadSceneAsync("ThermalComfort");
                     SceneManager.LoadSceneAsync("AirQuality", LoadSceneMode.Additive);
                     SceneManager.sceneLoaded += (scene, mode) => OnChangeState?.Invoke(this.state);

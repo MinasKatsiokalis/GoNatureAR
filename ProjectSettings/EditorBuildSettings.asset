@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/ThermalComfort.unity
     guid: aa7e4eeb68b097a489e233b0bf20bb35
   - enabled: 1
+    path: Assets/Scenes/AirQuality.unity
+    guid: e5a688422629c284cb5b89fbddfae385
+  - enabled: 1
     path: Assets/Scenes/NoiseExposure.unity
     guid: d95422878d3d5c042b7b7d4845263dd2
   m_configObjects:

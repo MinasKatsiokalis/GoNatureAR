@@ -16,4 +16,10 @@ namespace GoNatureAR
         Faint,
         Loud
     }
+
+    public enum AirIndex
+    {
+        Good,
+        Unhealthy
+    }
 }
