@@ -199,7 +199,7 @@ Material:
     - _StencilOperation: 0
     - _StencilReference: 0
     - _Surface: 0
-    - _TriplanarMappingBlendSharpness: 8.48
+    - _TriplanarMappingBlendSharpness: 7.24
     - _VertexColors: 0
     - _VertexExtrusion: 0
     - _VertexExtrusionSmoothNormals: 0

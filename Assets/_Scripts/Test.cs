@@ -14,12 +14,12 @@ public class Test : MonoBehaviour
 
     private void OnEnable()
     {
-        DataManager.OnDataUpdated += SetData;    
+        //DataManager.OnDataUpdated += SetData;    
     }
 
     private void OnDisable()
     {
-        DataManager.OnDataUpdated -= SetData;
+        //DataManager.OnDataUpdated -= SetData;
     }
 
     void Start()
@@ -52,28 +52,6 @@ public class Test : MonoBehaviour
 
                     Debug.Log("EU_AQI: " + EU_AQI);
                     Debug.Log("Index: " + index);   
-                }
-                break;
-            case SensorType.thermal: 
-                {
-                    if (DataManager.Instance.ThermalData == null)
-                        return;
-
-                    foreach (var measurement in DataManager.Instance.ThermalData.Keys)
-                    {
-                        Debug.Log(measurement.ToString() + " : " + DataManager.Instance.ThermalData[measurement].Value);
-                    }
-
-                    var pmv =ThermalComfortCalculator.CalculatePMV(
-                        DataManager.Instance.ThermalData[ThermalComfortElements.Temperature].Value, 
-                        DataManager.Instance.ThermalData[ThermalComfortElements.Humidity].Value
-                    );
-                    var ppd = ThermalComfortCalculator.CalculatePPD(pmv);
-                    var index = ThermalComfortCalculator.GetThermalComfortIndex(pmv);
-
-                    Debug.Log("PMV: " + pmv);
-                    Debug.Log("PPD: " + ppd);
-                    Debug.Log("Index: " + index);
                 }
                 break;
             case SensorType.noise:

@@ -173,7 +173,7 @@ Material:
     - _SphericalHarmonics: 0
     - _SrcBlend: 1
     - _Stencil: 0
-    - _StencilComparison: 3
+    - _StencilComparison: 0
     - _StencilOperation: 0
     - _StencilReference: 1
     - _Surface: 0

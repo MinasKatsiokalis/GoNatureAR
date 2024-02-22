@@ -49,7 +49,6 @@ namespace GoNatureAR
         {
             color_vect = new Vector4(color.r, color.g, color.b, color.a);
             color2_vect = new Vector4(color2.r, color2.g, color2.b, color2.a);
-
             musicAudioSource.Stop();
 
             StartCoroutine(InitializeScene());

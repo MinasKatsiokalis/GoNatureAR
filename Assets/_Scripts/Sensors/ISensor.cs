@@ -80,5 +80,4 @@ namespace GoNatureAR.Sensors
         };
         public IReadOnlyDictionary<SensorType, List<string>> SensorTypes => sensorTypes;
     }
-
 }

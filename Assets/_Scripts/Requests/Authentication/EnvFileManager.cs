@@ -26,14 +26,11 @@ public class EnvFileManager : MonoBehaviour
     {
         Dictionary<string, string> env = new Dictionary<string, string>();
         string[] lines = File.ReadAllLines(path);
-        if(lines != null)
-            Debug.Log("File read successfully");
 
         foreach (string line in lines)
         {
             if (!string.IsNullOrWhiteSpace(line) && !line.StartsWith("#"))
             {   
-                Debug.Log("Line: " + line);
                 string[] keyValue = line.Split(new[] { '=' }, 2);
                 if (keyValue.Length == 2)
                 {

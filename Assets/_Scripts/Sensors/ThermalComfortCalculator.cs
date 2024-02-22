@@ -115,11 +115,4 @@ namespace GoNatureAR.Sensors
                 return ThermalComofortIndex.Comfortable;
         }
     }
-
-    public enum ThermalComofortIndex
-    {
-        Hot,
-        Cold,
-        Comfortable
-    }
 }

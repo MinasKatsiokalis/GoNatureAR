@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 715e33f4352c9504298160de11462ccf, type: 3}
+  m_Name: Dialogue_ThermalUrbanHeatInfo
+  m_EditorClassIdentifier: 
+  DialogueKey:
+    State: 1
+    Keyword: 11
+  Text: "Cities are generally warmer than surrounding agricultural and forested areas.\nThis
+    phenomenon often described as the \"urban heat island effect.\".\n\r\nHeat has
+    direct effects on human health.\r\nSome major health issues, that are related
+    with urban heat, are:\n1. mild symptoms of fatigue. \n2. heatstroke \n3. hypotension
+    \n4. death "
+  AudioClip: {fileID: 8300000, guid: dfce1212a96d3d04681c6a05db24ab29, type: 3}

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 715e33f4352c9504298160de11462ccf, type: 3}
+  m_Name: Dialogue_ThermalCold
+  m_EditorClassIdentifier: 
+  DialogueKey:
+    State: 1
+    Keyword: 9
+  Text: "It's really cold outside! \nThe temperature feels to be to low.\n\nPut your
+    left palm facing up, to view the info panel."
+  AudioClip: {fileID: 8300000, guid: 5b22c67cbc94e144b998c47db98dd3d6, type: 3}

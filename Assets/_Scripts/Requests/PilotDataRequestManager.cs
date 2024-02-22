@@ -18,6 +18,7 @@ namespace GoNatureAR.Requests
         public static Action<Dictionary<EnumKey, double?>> OnThermalDataRecieved;
         public static Action<Dictionary<EnumKey, double?>> OnAirDataRecieved;
         public static Action<Dictionary<EnumKey, double?>> OnNoiseDataRecieved;
+        public static Action OnDataReceived;
         public static Action<string> OnError;
 
         private string accessToken;
@@ -56,7 +57,9 @@ namespace GoNatureAR.Requests
 
                 var noiseAverageData = await RequestData(pilot, SensorType.noise, cancellationTokent);
                 if (noiseAverageData != null && noiseAverageData.Count > 0)
-                    OnNoiseDataRecieved?.Invoke(noiseAverageData);  
+                    OnNoiseDataRecieved?.Invoke(noiseAverageData);
+
+                OnDataReceived?.Invoke();
             }
             catch (OperationCanceledException)
             {

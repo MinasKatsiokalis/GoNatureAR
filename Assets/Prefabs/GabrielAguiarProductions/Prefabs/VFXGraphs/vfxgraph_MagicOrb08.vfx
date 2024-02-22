@@ -3688,7 +3688,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614812}
   m_ExposedName: ParticlesSize
   m_Exposed: 1
-  m_Order: 4
+  m_Order: 24
   m_Category: PARTICLES
   m_Min:
     m_Type:
@@ -3790,7 +3790,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614830}
   m_ExposedName: ParticlesRate
   m_Exposed: 1
-  m_Order: 2
+  m_Order: 12
   m_Category: PARTICLES
   m_Min:
     m_Type:
@@ -13089,7 +13089,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615367}
   m_ExposedName: NoiseParticlesRate
   m_Exposed: 1
-  m_Order: 2
+  m_Order: 13
   m_Category: NOISE PARTICLES
   m_Min:
     m_Type:
@@ -13169,7 +13169,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615371}
   m_ExposedName: NoiseParticlesSize
   m_Exposed: 1
-  m_Order: 5
+  m_Order: 29
   m_Category: NOISE PARTICLES
   m_Min:
     m_Type:
@@ -13252,7 +13252,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615373}
   m_ExposedName: NoiseParticlesColor
   m_Exposed: 1
-  m_Order: 0
+  m_Order: 1
   m_Category: NOISE PARTICLES
   m_Min:
     m_Type:
@@ -13907,7 +13907,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615396}
   m_ExposedName: BeamSize
   m_Exposed: 1
-  m_Order: 4
+  m_Order: 25
   m_Category: BEAM
   m_Min:
     m_Type:
@@ -13987,7 +13987,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615398}
   m_ExposedName: BeamTexture
   m_Exposed: 1
-  m_Order: 1
+  m_Order: 6
   m_Category: BEAM
   m_Min:
     m_Type:
@@ -14067,7 +14067,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615400}
   m_ExposedName: BeamDarkTexture
   m_Exposed: 1
-  m_Order: 1
+  m_Order: 7
   m_Category: BEAM DARK
   m_Min:
     m_Type:
@@ -14147,7 +14147,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615406}
   m_ExposedName: BeamDarkSize
   m_Exposed: 1
-  m_Order: 4
+  m_Order: 26
   m_Category: BEAM DARK
   m_Min:
     m_Type:
@@ -14227,7 +14227,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615408}
   m_ExposedName: CircleTexture
   m_Exposed: 1
-  m_Order: 1
+  m_Order: 8
   m_Category: CIRCLE
   m_Min:
     m_Type:
@@ -14307,7 +14307,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615410}
   m_ExposedName: CircleSize
   m_Exposed: 1
-  m_Order: 4
+  m_Order: 27
   m_Category: CIRCLE
   m_Min:
     m_Type:
@@ -14387,7 +14387,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615414}
   m_ExposedName: SwirlSize
   m_Exposed: 1
-  m_Order: 3
+  m_Order: 18
   m_Category: SWIRLS
   m_Min:
     m_Type:
@@ -14606,7 +14606,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615426}
   m_ExposedName: NoiseParticlesTexture
   m_Exposed: 1
-  m_Order: 1
+  m_Order: 9
   m_Category: NOISE PARTICLES
   m_Min:
     m_Type:
@@ -14686,7 +14686,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615428}
   m_ExposedName: BeamColor
   m_Exposed: 1
-  m_Order: 0
+  m_Order: 2
   m_Category: BEAM
   m_Min:
     m_Type:
@@ -14902,7 +14902,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615434}
   m_ExposedName: BeamLifetime
   m_Exposed: 1
-  m_Order: 3
+  m_Order: 19
   m_Category: BEAM
   m_Min:
     m_Type:
@@ -14982,7 +14982,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615436}
   m_ExposedName: BeamRate
   m_Exposed: 1
-  m_Order: 2
+  m_Order: 14
   m_Category: BEAM
   m_Min:
     m_Type:
@@ -15062,7 +15062,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615438}
   m_ExposedName: BeamDarkLifetime
   m_Exposed: 1
-  m_Order: 3
+  m_Order: 20
   m_Category: BEAM DARK
   m_Min:
     m_Type:
@@ -15142,7 +15142,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615440}
   m_ExposedName: BeamDarkRate
   m_Exposed: 1
-  m_Order: 2
+  m_Order: 15
   m_Category: BEAM DARK
   m_Min:
     m_Type:
@@ -15222,7 +15222,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615442}
   m_ExposedName: BeamDarkColor
   m_Exposed: 1
-  m_Order: 0
+  m_Order: 3
   m_Category: BEAM DARK
   m_Min:
     m_Type:
@@ -15438,7 +15438,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615448}
   m_ExposedName: CircleColor
   m_Exposed: 1
-  m_Order: 0
+  m_Order: 4
   m_Category: CIRCLE
   m_Min:
     m_Type:
@@ -15654,7 +15654,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615454}
   m_ExposedName: CircleRate
   m_Exposed: 1
-  m_Order: 2
+  m_Order: 16
   m_Category: CIRCLE
   m_Min:
     m_Type:
@@ -15734,7 +15734,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615456}
   m_ExposedName: CircleLifetime
   m_Exposed: 1
-  m_Order: 3
+  m_Order: 21
   m_Category: CIRCLE
   m_Min:
     m_Type:
@@ -15814,7 +15814,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615458}
   m_ExposedName: SwirlRate
   m_Exposed: 1
-  m_Order: 1
+  m_Order: 10
   m_Category: SWIRLS
   m_Min:
     m_Type:
@@ -15894,7 +15894,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615460}
   m_ExposedName: SwirlLifetime
   m_Exposed: 1
-  m_Order: 2
+  m_Order: 17
   m_Category: SWIRLS
   m_Min:
     m_Type:
@@ -15974,7 +15974,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615462}
   m_ExposedName: SwirlColor
   m_Exposed: 1
-  m_Order: 0
+  m_Order: 5
   m_Category: SWIRLS
   m_Min:
     m_Type:
@@ -16190,7 +16190,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615468}
   m_ExposedName: NoiseParticlesLifetime
   m_Exposed: 1
-  m_Order: 3
+  m_Order: 22
   m_Category: NOISE PARTICLES
   m_Min:
     m_Type:
@@ -16409,7 +16409,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615474}
   m_ExposedName: NoiseParticlesRadius
   m_Exposed: 1
-  m_Order: 4
+  m_Order: 28
   m_Category: NOISE PARTICLES
   m_Min:
     m_Type:
@@ -16492,7 +16492,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615476}
   m_ExposedName: ParticleTexture
   m_Exposed: 1
-  m_Order: 1
+  m_Order: 11
   m_Category: PARTICLES
   m_Min:
     m_Type:
@@ -16572,7 +16572,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615478}
   m_ExposedName: ParticlesLifetime
   m_Exposed: 1
-  m_Order: 3
+  m_Order: 23
   m_Category: PARTICLES
   m_Min:
     m_Type:
