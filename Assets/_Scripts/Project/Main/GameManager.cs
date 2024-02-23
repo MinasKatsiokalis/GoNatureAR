@@ -32,13 +32,16 @@ namespace GoNatureAR
         {
             NarrationManager.OnIntroductionEnded += GoToNextState;
             NarrationManager.OnThermalSceneEnded += GoToNextState;
+            NarrationManager.OnAirQualitySceneEnded += GoToNextState;
+            NarrationManager.OnNoiseExposureSceneEnded += GoToNextState;
         }
 
         private void OnDisable()
         {
             NarrationManager.OnIntroductionEnded -= GoToNextState;
             NarrationManager.OnThermalSceneEnded -= GoToNextState;
-
+            NarrationManager.OnAirQualitySceneEnded -= GoToNextState;
+            NarrationManager.OnNoiseExposureSceneEnded -= GoToNextState;
         }
 
         // Start is called before the first frame update
@@ -59,7 +62,6 @@ namespace GoNatureAR
 
             // Set the current state to the next state
             SetCurrentState(states[currentStateIndex]);
-
         }
 
         private void SetCurrentState(State state)
@@ -99,8 +101,17 @@ namespace GoNatureAR
         }
 
         private void Restart()
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        {   
+            // Start from the end to avoid index changes due to scene unloading
+            for (int i = SceneManager.sceneCount - 1; i > 0; i--) 
+            {
+                Scene scene = SceneManager.GetSceneAt(i);
+                if (scene.isLoaded)
+                {
+                    SceneManager.UnloadSceneAsync(scene);
+                }
+            }
+            SceneManager.LoadScene(0);
         }
     }
 

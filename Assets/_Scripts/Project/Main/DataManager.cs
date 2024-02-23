@@ -52,7 +52,12 @@ namespace GoNatureAR
 
         #region Thermal Data
         private void SetPilotThermalData(Dictionary<EnumKey, double?> thermalData)
-        {   
+        {
+            if (thermalData == null)
+            {
+                ThermalData = null;
+                return;
+            }
             EnumKey airTemperatureKey = new EnumKey(ThermalComfortMeasurements.airTemperature);
             EnumKey humidityKey = new EnumKey(ThermalComfortMeasurements.humidity);
 
@@ -65,11 +70,17 @@ namespace GoNatureAR
         #region Air Data
         private void SetPilotAirData(Dictionary<EnumKey, double?> airData)
         {   
+            if (airData == null)
+            {
+                AirData = null;
+                return;
+            }
+
             AirData = new Dictionary<AirQualityElements, double?>();
             AirData[AirQualityElements.PM10] = GetAirDataValue(airData, AirQualityMeasurements.MassConcentrationPM10_0, AirQualityMeasurements.pm10_0);
             AirData[AirQualityElements.PM2_5] = GetAirDataValue(airData, AirQualityMeasurements.MassConcentrationPM2_5, AirQualityMeasurements.pm2_5);
-            AirData[AirQualityElements.PM1_0] = GetAirDataValue(airData, AirQualityMeasurements.MassConcentrationPM1_0, AirQualityMeasurements.pm1_0);
-            AirData[AirQualityElements.PM4_0] = GetAirDataValue(airData, AirQualityMeasurements.MassConcentrationPM4_0);
+            AirData[AirQualityElements.PM1] = GetAirDataValue(airData, AirQualityMeasurements.MassConcentrationPM1_0, AirQualityMeasurements.pm1_0);
+            AirData[AirQualityElements.PM4] = GetAirDataValue(airData, AirQualityMeasurements.MassConcentrationPM4_0);
             AirData[AirQualityElements.CL2] = GetAirDataValue(airData, AirQualityMeasurements.CL2ppm, molecularWeight: 70.906, isPpm: true);
             AirData[AirQualityElements.CO2] = GetAirDataValue(airData, AirQualityMeasurements.CO2ppm, molecularWeight: 44.01, isPpm: true);
             AirData[AirQualityElements.CO] = GetAirDataValue(airData, AirQualityMeasurements.COppm, AirQualityMeasurements.COugm3, 28.01, true);
@@ -136,6 +147,12 @@ namespace GoNatureAR
         #region Noise Data
         private void SetNoisePilotData(Dictionary<EnumKey, double?> noiseData)
         {   
+            if(noiseData == null)
+            {
+                NoiseData = null;
+                return;
+            }
+
             EnumKey soundDbKey = new EnumKey(NoiseMeasurements.sounddB);
             EnumKey soundKey = new EnumKey(NoiseMeasurements.sound);
             EnumKey laeqKey = new EnumKey(NoiseMeasurements.LAEQ);
@@ -159,8 +176,8 @@ namespace GoNatureAR
     {
         PM10,
         PM2_5,
-        PM1_0,
-        PM4_0,
+        PM1,
+        PM4,
         CL2,
         CO2,
         CO,

@@ -74,7 +74,9 @@ namespace GoNatureAR
                 case ThermalComofortIndex.Cold:
                     MusicManager.Instance.PlayMusic(_coldAmbientMusic);
                     _thermalDetailsBackground.GetComponent<MeshRenderer>().material.SetColor("_InnerGlowColor", color.Cold);
-                    _coldEffect.SetActive(true);
+                    _coldEffect.SetActive(true); 
+                    _hotEffect.SetActive(false);
+                    _sweatEffect.SetActive(false);
                     break;
                 case ThermalComofortIndex.Hot:
                     MusicManager.Instance.PlayMusic(_hotAmbientMusic);
@@ -82,7 +84,8 @@ namespace GoNatureAR
                     audioSource.clip = _hotSoundFX;
                     audioSource.Play();
                     _hotEffect.SetActive(true);
-                    if(humidity >= 65)
+                    _coldEffect.SetActive(false);
+                    if (humidity >= 65)
                         _sweatEffect.SetActive(true);
                     break;
                 default:

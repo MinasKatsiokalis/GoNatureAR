@@ -71,6 +71,9 @@ namespace GoNatureAR
             _thermalDetailsPanel.SetActive(!_thermalDetailsPanel.activeSelf);
             _button.IsToggled = _thermalDetailsPanel.activeSelf;
 
+            if(Index == ThermalComofortIndex.Hot)
+                _thermalDetailsPanel.transform.GetChild(1).gameObject.SetActive(_thermalDetailsPanel.activeSelf);
+
             if (!_thermalDetailsPanel.activeSelf)
                 return;
 

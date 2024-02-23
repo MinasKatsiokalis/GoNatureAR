@@ -46,18 +46,15 @@ namespace GoNatureAR.Requests
             try
             {
                 var airAverageData = await RequestData(pilot, SensorType.air, cancellationTokent);
-                if(airAverageData != null && airAverageData.Count > 0)
-                    OnAirDataRecieved?.Invoke(airAverageData);
+                OnAirDataRecieved?.Invoke(airAverageData);
 
                 currentPilot = pilot;
 
                 var thermalAverageData = await RequestData(pilot, SensorType.thermal, cancellationTokent);
-                if (thermalAverageData != null && thermalAverageData.Count > 0)
-                    OnThermalDataRecieved?.Invoke(thermalAverageData);
+                OnThermalDataRecieved?.Invoke(thermalAverageData);
 
                 var noiseAverageData = await RequestData(pilot, SensorType.noise, cancellationTokent);
-                if (noiseAverageData != null && noiseAverageData.Count > 0)
-                    OnNoiseDataRecieved?.Invoke(noiseAverageData);
+                OnNoiseDataRecieved?.Invoke(noiseAverageData);
 
                 OnDataReceived?.Invoke();
             }

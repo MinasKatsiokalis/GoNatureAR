@@ -968,6 +968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a964668d58482db4c8ee3f9273e4db39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _handConstraintPalmUp: {fileID: 981022203}
   _noiseDetailsVFX: {fileID: 1143318921}
   _noiseDetailsBackground: {fileID: 2142885540}
   _noiseDetailsText: {fileID: 1889014806}

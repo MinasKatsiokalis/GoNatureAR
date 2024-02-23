@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Dialogue_NoiseIntro
   m_EditorClassIdentifier: 
   DialogueKey:
-    State: 1
-    Keyword: 5
+    State: 2
+    Keyword: 6
   Text: 'I haven''t show you yet all my abilities...
 
     My hearing is quite sensitive

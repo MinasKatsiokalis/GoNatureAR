@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 715e33f4352c9504298160de11462ccf, type: 3}
+  m_Name: Dialogue_OutroIntro
+  m_EditorClassIdentifier: 
+  DialogueKey:
+    State: 4
+    Keyword: 0
+  Text: 'Now that you are aware of the various threats of climate conditions, come
+    with me in a more quite place,
+
+    and let me inform you how green spaces and
+    plants, can help with all those phenomena.
+
+    
+
+    Select any of the three
+    options, to be informed about each condition.'
+  AudioClip: {fileID: 8300000, guid: 74c8467926e3b644caca2a1bf608b70b, type: 3}

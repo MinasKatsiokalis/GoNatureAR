@@ -16,6 +16,8 @@ namespace GoNatureAR
 
         public static Action OnIntroductionEnded;
         public static Action OnThermalSceneEnded;
+        public static Action OnAirQualitySceneEnded;
+        public static Action OnNoiseExposureSceneEnded;
         public static Action<DialogueScriptableObject> OnDialogueTrigger;
         public static Action OnConfirmed;
 
@@ -43,7 +45,11 @@ namespace GoNatureAR
             ThermalComfortManager.OnInfoButtonPressed += InfoDialogueHandle;
             ThermalComfortManager.OnThermalComfortCalculated += OnThermalComfortCalcualtedHandle;
 
+            AirQualityManager.OnAirQualityCalculated += OnAirQualityCalculatedHandle;
+            AirQualityManager.OnInfoButtonPressed += OnButtonPressedHandle;
+
             NoiseExposureManager.OnNoiseCalculated += OnNoiseCalculatedHandle;
+            NoiseExposureManager.OnHandMenuEnabled += OnMenuEnabledHandle;
         }
 
         private void OnDisable()
@@ -53,7 +59,11 @@ namespace GoNatureAR
             ThermalComfortManager.OnInfoButtonPressed -= InfoDialogueHandle;
             ThermalComfortManager.OnThermalComfortCalculated -= OnThermalComfortCalcualtedHandle;
 
+            AirQualityManager.OnAirQualityCalculated -= OnAirQualityCalculatedHandle;
+            AirQualityManager.OnInfoButtonPressed -= OnButtonPressedHandle;
+
             NoiseExposureManager.OnNoiseCalculated -= OnNoiseCalculatedHandle;
+            NoiseExposureManager.OnHandMenuEnabled -= OnMenuEnabledHandle;
         }
 
         private void Start()
@@ -64,7 +74,6 @@ namespace GoNatureAR
             speechInputHandler.AddResponse(GetKeywordToString(Keyword.Continue), () => GetDialogue(Keyword.Continue));
             speechInputHandler.AddResponse(GetKeywordToString(Keyword.Yes), () => GetDialogue(Keyword.Yes));
             speechInputHandler.AddResponse(GetKeywordToString(Keyword.LetsGo), () => GetDialogue(Keyword.LetsGo));
-
         }
 
         private void OnChangeStateHandler(State state)
@@ -86,6 +95,7 @@ namespace GoNatureAR
                     break;
                 case State.Outro:
                     currentDialogueKey.State = State.Outro;
+                    GetDialogue(Keyword.Intro);
                     break;
             }
         }
@@ -93,17 +103,25 @@ namespace GoNatureAR
         private async void GetDialogue(Keyword keyword)
         {   
             //Before talk
-            if(keyword == Keyword.Yes && currentDialogueKey.State == State.Temperature ||
-               keyword == Keyword.Yes && currentDialogueKey.State == State.Noise)
+            if(keyword == Keyword.Yes && (currentDialogueKey.State == State.Temperature ||
+                                          currentDialogueKey.State == State.Noise ||
+                                          currentDialogueKey.State == State.AirQuality))
             {
                 OnConfirmed?.Invoke();
                 return;
             }
 
-            if (keyword == Keyword.Continue && currentDialogueKey.State == State.Temperature)
+            if (keyword == Keyword.LetsGo && currentDialogueKey.State == State.Temperature)
             {
-                await Task.Delay(4000);
+                await Task.Delay(2000);
                 OnThermalSceneEnded?.Invoke();
+                return;
+            }
+
+            if (keyword == Keyword.Continue && currentDialogueKey.State == State.AirQuality)
+            {
+                await Task.Delay(2000);
+                OnAirQualitySceneEnded?.Invoke();
                 return;
             }
 
@@ -139,6 +157,36 @@ namespace GoNatureAR
             OnDialogueTrigger?.Invoke(_narrationSequence.GetDialogueByKey(new DialogueKey(State.Introduction, Keyword.Palm)));
         }
 
+        #region AIR QUALITY
+        private void OnAirQualityCalculatedHandle(AirIndex index)
+        {
+            switch (index)
+            {
+                case AirIndex.Good:
+                    GetDialogue(Keyword.Comfortable);
+                    break;
+                case AirIndex.Unhealthy:
+                    GetDialogue(Keyword.Loud);
+                    break;
+            }
+        }
+
+        private async void OnButtonPressedHandle(AirIndex index)
+        {
+            switch (index)
+            {
+                case AirIndex.Good:
+                    GetDialogue(Keyword.Done);
+                    break;
+                case AirIndex.Unhealthy:
+                    GetDialogue(Keyword.Info);
+                    await Task.Delay(15000);
+                    GetDialogue(Keyword.Select);
+                    break;
+            }
+        }
+        #endregion
+
         #region THERMAL
         private void OnThermalComfortCalcualtedHandle(ThermalComofortIndex index, double humidity)
         {
@@ -156,14 +204,18 @@ namespace GoNatureAR
             }
         }
 
-        private void InfoDialogueHandle(ThermalComofortIndex index)
+        private async void InfoDialogueHandle(ThermalComofortIndex index)
         {
             if(currentDialogueKey.State == State.Temperature)
             {
                 if (index == ThermalComofortIndex.Cold || index == ThermalComofortIndex.Comfortable)
                     GetDialogue(Keyword.Done);
                 else
-                    GetDialogue(Keyword.Info);
+                {
+                    GetDialogue(Keyword.Info); 
+                    await Task.Delay(25000);
+                    GetDialogue(Keyword.Select);
+                }
             }
         }
         #endregion
@@ -178,6 +230,21 @@ namespace GoNatureAR
                     break;
                 case NoiseExposureIndex.Loud:
                     GetDialogue(Keyword.Loud);
+                    break;
+            }
+        }
+
+        private async void OnMenuEnabledHandle(NoiseExposureIndex index)
+        {
+            switch (index)
+            {
+                case NoiseExposureIndex.Faint:
+                    GetDialogue(Keyword.Done);
+                    break;
+                case NoiseExposureIndex.Loud:
+                    GetDialogue(Keyword.Info);
+                    await Task.Delay(20000);
+                    OnNoiseExposureSceneEnded?.Invoke();
                     break;
             }
         }
