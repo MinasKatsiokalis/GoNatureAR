@@ -39,7 +39,7 @@ namespace GoNatureAR
         private void OnEnable()
         {
             var mainCamera = Camera.main;
-            this.transform.position = mainCamera.transform.position + mainCamera.transform.forward * 1.5f;
+            this.transform.position = mainCamera.transform.position + mainCamera.transform.forward * 2f;
 
             PilotDataRequestManager.OnError += EnableErrorPanel;
         }

@@ -34,6 +34,7 @@ namespace GoNatureAR
             NarrationManager.OnThermalSceneEnded += GoToNextState;
             NarrationManager.OnAirQualitySceneEnded += GoToNextState;
             NarrationManager.OnNoiseExposureSceneEnded += GoToNextState;
+            NarrationManager.OnReset += Restart;
         }
 
         private void OnDisable()
@@ -42,6 +43,7 @@ namespace GoNatureAR
             NarrationManager.OnThermalSceneEnded -= GoToNextState;
             NarrationManager.OnAirQualitySceneEnded -= GoToNextState;
             NarrationManager.OnNoiseExposureSceneEnded -= GoToNextState;
+            NarrationManager.OnReset -= Restart;
         }
 
         // Start is called before the first frame update

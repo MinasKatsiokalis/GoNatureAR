@@ -16,8 +16,8 @@ MonoBehaviour:
     State: 1
     Keyword: 11
   Text: "Cities are generally warmer than surrounding agricultural and forested areas.\nThis
-    phenomenon often described as the \"urban heat island effect.\".\n\r\nHeat has
+    phenomenon often described as the \"urban heat island effect\".\n\r\nHeat has
     direct effects on human health.\r\nSome major health issues, that are related
-    with urban heat, are:\n1. mild symptoms of fatigue. \n2. heatstroke \n3. hypotension
-    \n4. death "
+    with urban heat, are:\n1. Mild symptoms of fatigue. \n2. Heatstroke \n3. Hypotension
+    \n4. Death "
   AudioClip: {fileID: 8300000, guid: dfce1212a96d3d04681c6a05db24ab29, type: 3}

@@ -49,7 +49,7 @@ namespace GoNatureAR
             }
             else if((dialogue.DialogueKey.Keyword == Keyword.Julie) && palmUp)
             {
-                if (isJulieCalled)
+                if (isJulieCalled && GameManager.Instance.CurrentState != State.Introduction)
                     return;
                 else
                     isJulieCalled = true;

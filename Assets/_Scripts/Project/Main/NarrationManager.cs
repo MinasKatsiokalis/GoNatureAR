@@ -5,7 +5,9 @@ using Microsoft.MixedReality.Toolkit.UI;
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
+using Timer = System.Timers.Timer;
 using static GoNatureAR.SpeechProfile;
+using System.Timers;
 
 namespace GoNatureAR
 {
@@ -14,12 +16,13 @@ namespace GoNatureAR
     {
         public static NarrationManager Instance { get; private set; }
 
+        public static Action<DialogueScriptableObject> OnDialogueTrigger;
         public static Action OnIntroductionEnded;
         public static Action OnThermalSceneEnded;
         public static Action OnAirQualitySceneEnded;
         public static Action OnNoiseExposureSceneEnded;
-        public static Action<DialogueScriptableObject> OnDialogueTrigger;
         public static Action OnConfirmed;
+        public static Action OnReset;
 
         [SerializeField]
         private NarrationScriptableObject _narrationSequence;
@@ -28,6 +31,8 @@ namespace GoNatureAR
 
         private SpeechInputHandler speechInputHandler;
         private DialogueKey currentDialogueKey;
+        private Timer timer;
+        private bool isNarratorReady;
 
         private void Awake()
         {
@@ -39,6 +44,10 @@ namespace GoNatureAR
 
         private void OnEnable()
         {
+            isNarratorReady = true;
+            timer = new Timer(20000f);
+            timer.Elapsed += OnThresholdPassed;
+
             GameManager.OnChangeState += OnChangeStateHandler; 
             PilotDataRequestManager.OnDataReceived += () => GetDialogue(Keyword.Done);
 
@@ -50,6 +59,11 @@ namespace GoNatureAR
 
             NoiseExposureManager.OnNoiseCalculated += OnNoiseCalculatedHandle;
             NoiseExposureManager.OnHandMenuEnabled += OnMenuEnabledHandle;
+
+            OutroManager.OnAirButtonPressed += () => GetDialogue(Keyword.Comfortable);
+            OutroManager.OnNoiseButtonPressed += () => GetDialogue(Keyword.Loud);
+            OutroManager.OnHeatButtonPressed += () => GetDialogue(Keyword.Hot);
+            OutroManager.OnOutroEnded += () => OnReset?.Invoke();
         }
 
         private void OnDisable()
@@ -74,6 +88,7 @@ namespace GoNatureAR
             speechInputHandler.AddResponse(GetKeywordToString(Keyword.Continue), () => GetDialogue(Keyword.Continue));
             speechInputHandler.AddResponse(GetKeywordToString(Keyword.Yes), () => GetDialogue(Keyword.Yes));
             speechInputHandler.AddResponse(GetKeywordToString(Keyword.LetsGo), () => GetDialogue(Keyword.LetsGo));
+            speechInputHandler.AddResponse("Restart", () => OnReset?.Invoke());
         }
 
         private void OnChangeStateHandler(State state)
@@ -103,7 +118,7 @@ namespace GoNatureAR
         private async void GetDialogue(Keyword keyword)
         {   
             //Before talk
-            if(keyword == Keyword.Yes && (currentDialogueKey.State == State.Temperature ||
+            if (keyword == Keyword.Yes && (currentDialogueKey.State == State.Temperature ||
                                           currentDialogueKey.State == State.Noise ||
                                           currentDialogueKey.State == State.AirQuality))
             {
@@ -113,6 +128,12 @@ namespace GoNatureAR
 
             if (keyword == Keyword.LetsGo && currentDialogueKey.State == State.Temperature)
             {
+                if (!isNarratorReady)
+                    return;
+
+                isNarratorReady = false;
+                timer.Enabled = true;
+
                 await Task.Delay(2000);
                 OnThermalSceneEnded?.Invoke();
                 return;
@@ -120,6 +141,12 @@ namespace GoNatureAR
 
             if (keyword == Keyword.Continue && currentDialogueKey.State == State.AirQuality)
             {
+                if (!isNarratorReady)
+                    return;
+
+                isNarratorReady = false;
+                timer.Enabled = true;
+
                 await Task.Delay(2000);
                 OnAirQualitySceneEnded?.Invoke();
                 return;
@@ -127,11 +154,18 @@ namespace GoNatureAR
 
             //Talk
             currentDialogueKey.Keyword = keyword;
+            Debug.Log(currentDialogueKey.State + " " + currentDialogueKey.Keyword );
             OnDialogueTrigger?.Invoke(_narrationSequence.GetDialogueByKey(currentDialogueKey));
 
             //After talk
             if (currentDialogueKey.State == State.Introduction && currentDialogueKey.Keyword == Keyword.Continue)
             {
+                if (!isNarratorReady)
+                    return;
+
+                isNarratorReady = false;
+                timer.Enabled = true;
+
                 _pilotsPanel.SetActive(false);
                 await Task.Delay(6000);
                 OnIntroductionEnded?.Invoke();
@@ -249,5 +283,11 @@ namespace GoNatureAR
             }
         }
         #endregion
+
+        private void OnThresholdPassed(object sender, ElapsedEventArgs e)
+        {
+            isNarratorReady = true;
+            timer.Enabled = false;
+        }
     }
 }

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 715e33f4352c9504298160de11462ccf, type: 3}
+  m_Name: Dialogue_OutroAIr
+  m_EditorClassIdentifier: 
+  DialogueKey:
+    State: 4
+    Keyword: 10
+  Text: "Trees and vegetation in parks can help reduce air pollution directly by
+    removing pollutants and reducing air temperature, both of which contribute to
+    smog, and indirectly by reducing energy needs for cooling in surrounding buildings
+    and associated pollutant emissions from power plants. \r\n\r\nThe effect of vegetation
+    on urban air quality depends on the vegetation itself, its position on the site,
+    and overall landscape design, as well as the level of air pollution in the area.
+    Since pollution is more concentrated at the source, vegetation should be planted
+    close to the source. "
+  AudioClip: {fileID: 8300000, guid: ede83d3224ca29f41ba61d2c987b373b, type: 3}

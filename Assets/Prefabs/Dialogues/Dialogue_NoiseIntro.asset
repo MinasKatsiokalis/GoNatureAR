@@ -25,5 +25,5 @@ MonoBehaviour:
 
 
     When
-    you are ready to proceed, please say<b>"Continue"</b>.'
+    you are ready to proceed, please say <b>"Continue"</b>.'
   AudioClip: {fileID: 8300000, guid: 0aa6bcc7d6d2b17439c53194af9a9e76, type: 3}

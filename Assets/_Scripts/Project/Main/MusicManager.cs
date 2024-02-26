@@ -16,10 +16,8 @@ namespace GoNatureAR
                 Destroy(this);
             else
                 Instance = this;
-        }
 
-        void Start()
-        {
+
             audioSource = GetComponent<AudioSource>();
         }
 

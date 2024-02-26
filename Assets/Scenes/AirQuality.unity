@@ -2227,7 +2227,7 @@ VisualEffect:
       m_Array:
       - m_Value:
           serializedVersion: 2
-          key0: {r: 0.9254902, g: 0.1071404, b: 0, a: 1}
+          key0: {r: 0.9254902, g: 0, b: 0.42906445, a: 1}
           key1: {r: 1, g: 0.49375993, b: 0.062745094, a: 0.5529412}
           key2: {r: 0.5, g: 0.5, b: 0.5, a: 0}
           key3: {r: 0, g: 0, b: 0, a: 0}

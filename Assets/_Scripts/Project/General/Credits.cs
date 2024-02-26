@@ -1,55 +1,78 @@
+using DG.Tweening;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Credits : MonoBehaviour
+namespace GoNatureAR
 {
-    public static Credits Instance;
-    private void Awake()
-    {
-        if (Instance != null)
-            Destroy(this);
-        else
-            Instance = this;
-    }
-    [SerializeField] GameObject _sphere;
-    [SerializeField] GameObject _content;
-    [SerializeField] GameObject _creditsPanel;
-    [SerializeField] float _speed;
+    public class Credits : MonoBehaviour
+    {   
+        
+        [SerializeField] GameObject _sphere;
+        [SerializeField] GameObject _content;
+        [SerializeField] GameObject _creditsPanel;
+        [SerializeField] float _speed;
 
-    float fadeStart = 0;
-    float fadeTime = 1f;
-    Color objectColor = new Color(0.5382634f, 0.3237806f, 0.6415094f, 0f);
-    Color fadeColor = new Color(0.5382634f, 0.3237806f, 0.6415094f, 1f);
+        private Camera mainCamera;
+        private GameObject companionContainer;
+        private AudioSource narrationAudioSource;
 
-    public void EnableCredits()
-    {
-        _sphere.SetActive(true);
-        _content.SetActive(false);
-        _creditsPanel.SetActive(true);
-
-        //StartCoroutine(FadeIn());
-        StartCoroutine(MoveCredits());
-    }
-    IEnumerator FadeIn()
-    {
-        while (fadeStart < fadeTime)
+        private void OnEnable()
         {
-            fadeStart += Time.deltaTime * fadeTime;
-            _sphere.GetComponent<Renderer>().material.color = Color.Lerp(objectColor, fadeColor, fadeStart);
-            yield return null;
-        }
-    }
-    IEnumerator MoveCredits()
-    {
-        yield return new WaitForSeconds(4);
-
-        while (_creditsPanel.transform.position.y <= 5.0f)
-        {
-            _creditsPanel.transform.Translate(Vector3.up * Time.deltaTime * _speed);
-            yield return null;
+            OutroManager.OnCreditsEnabled += EnableCredits;
         }
 
-        Application.Quit();
+        private void Start()
+        {
+            mainCamera = Camera.main;
+            companionContainer = GameObject.Find("CompanionContainer");
+            narrationAudioSource = companionContainer.transform.GetChild(0).GetComponent<AudioSource>();
+
+            AttachToCamera();
+        }
+
+        private void Update()
+        {
+            AttachToCamera();
+        }
+
+        public void EnableCredits()
+        {
+            StartCoroutine(EnableCreditsCo());
+        }
+
+        IEnumerator EnableCreditsCo()
+        {
+            while (narrationAudioSource.isPlaying)
+            {
+                yield return null;
+            }
+            
+            yield return new WaitForSeconds(3);
+
+            _sphere.SetActive(true);
+            _sphere.GetComponent<Renderer>().material.DOFade(1, 1);
+            _content.SetActive(false);
+            _creditsPanel.SetActive(true);
+            companionContainer.SetActive(false);
+
+            yield return new WaitForSeconds(3);
+
+            while (_creditsPanel.transform.position.y <= 2.0f)
+            {
+                _creditsPanel.transform.Translate(Vector3.up * Time.deltaTime * _speed);
+                yield return null;
+            }
+
+            OutroManager.OnOutroEnded?.Invoke();
+        }
+
+        private void AttachToCamera()
+        {
+            if (mainCamera != null)
+            {
+                _sphere.transform.position = mainCamera.transform.position;
+                _sphere.transform.rotation = mainCamera.transform.rotation;
+            }
+        }
     }
 }

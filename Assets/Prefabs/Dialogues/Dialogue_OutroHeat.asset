@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 715e33f4352c9504298160de11462ccf, type: 3}
+  m_Name: Dialogue_OutroHeat
+  m_EditorClassIdentifier: 
+  DialogueKey:
+    State: 4
+    Keyword: 8
+  Text: "Urban trees are particularly vital for reducing heat stress and decreasing
+    the size and effect of the urban heat island. \n\nTrees have the unique ability
+    to provide micro-cooling through evapotranspiration and relief from heat stress
+    through shade. \n\nBoth small and large areas of green space can provide cool
+    islands within cities. "
+  AudioClip: {fileID: 8300000, guid: 0d5215451711b5643a37646b6433b788, type: 3}
