@@ -1,6 +1,5 @@
 # GoNatureAR
-
-**Mixed Reality audio-visual experience, designed & developed for Hololens2 devices.**
+ **Mixed Reality audio-visual experience, designed & developed for Hololens2 devices.**
 
 Main means of interaction: voice, hands
 
