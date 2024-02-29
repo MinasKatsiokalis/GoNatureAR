@@ -6,20 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/DEMO.unity
-    guid: 7d73946d136ab2145896f895355df42f
-  - enabled: 0
-    path: Assets/Scenes/IntroductionScene.unity
-    guid: b72c3efc232cb8c4caab28f0ef0cdab6
-  - enabled: 0
-    path: Assets/Scenes/AirPolutionDemo.unity
-    guid: e34bd29850440d445a69773d5cdeddf7
-  - enabled: 0
-    path: Assets/Scenes/NoisePollutionDemo.unity
-    guid: 9d9d8f6f152b03e48b172aa977804ca2
-  - enabled: 0
-    path: Assets/Scenes/PortalScene.unity
-    guid: 0c9367e5df04c014b9e5c17899f1d591
+    path: Assets/Scenes/MenuScene.unity
+    guid: e90291b645df6984ba6900d2eb3f7d01
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: fd135a007fb4a7e4bb54f36fa86f2ac1
+  - enabled: 1
+    path: Assets/Scenes/ThermalComfort.unity
+    guid: aa7e4eeb68b097a489e233b0bf20bb35
+  - enabled: 1
+    path: Assets/Scenes/AirQuality.unity
+    guid: e5a688422629c284cb5b89fbddfae385
+  - enabled: 1
+    path: Assets/Scenes/NoiseExposure.unity
+    guid: d95422878d3d5c042b7b7d4845263dd2
+  - enabled: 1
+    path: Assets/Scenes/Outro.unity
+    guid: 94bf32e85ab241049812866aa4d613ca
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: df272d4e79a849b43882cbcab0e7d681,
       type: 2}

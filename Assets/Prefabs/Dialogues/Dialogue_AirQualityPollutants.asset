@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 715e33f4352c9504298160de11462ccf, type: 3}
+  m_Name: Dialogue_AirQualityPollutants
+  m_EditorClassIdentifier: 
+  DialogueKey:
+    State: 2
+    Keyword: 11
+  Text: 'These pollutants are related with:
+
+    1. Respiratory Conditions
+
+    2.
+    Cardiovascular Diseases
+
+    3. Pregnancy Outcome
+
+    4. Premature Death'
+  AudioClip: {fileID: 8300000, guid: e9956c608be41c743abd986081bdb373, type: 3}

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 715e33f4352c9504298160de11462ccf, type: 3}
+  m_Name: Dialogue_OutroNoise
+  m_EditorClassIdentifier: 
+  DialogueKey:
+    State: 4
+    Keyword: 12
+  Text: "Evidence suggests that a well-designed urban green space can buffer the
+    noise, or the negative perception of noise, \nemanating from non-natural sources,
+    such as traffic, and provide relief from city noise. \n\nVegetation has been
+    considered a mean to reduce outdoor noise pollution, \nmainly in areas with high
+    volumes of traffic.  "
+  AudioClip: {fileID: 8300000, guid: 02fbce9a5880f2340b6b10baf8962d14, type: 3}

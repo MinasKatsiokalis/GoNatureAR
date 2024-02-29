@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Minas
-  productName: DEMO
+  companyName: MinasKatsiokalis
+  productName: GoNatureAR
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -39,8 +39,11 @@ PlayerSettings:
     y: 0
     width: 1
     height: 1
-  m_SplashScreenLogos: []
-  m_VirtualRealitySplashScreen: {fileID: 0}
+  m_SplashScreenLogos:
+  - logo: {fileID: 21300000, guid: 2ade1a49a3df20e4b976a39a60eb6a1e, type: 3}
+    duration: 2
+  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: 2ade1a49a3df20e4b976a39a60eb6a1e,
+    type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
   defaultScreenHeight: 768
@@ -134,7 +137,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.1.3
+  bundleVersion: 1.0.0
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 0}
@@ -320,7 +323,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: a74adf92252ecb14ea1753ff8902457c, type: 3}
+      m_Icon: {fileID: 2800000, guid: f3611b9383f636f46a96e0b298f5c958, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -786,8 +789,21 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    1: 
-    14: 
+    1: DOTWEEN
+    4: DOTWEEN
+    7: DOTWEEN
+    13: DOTWEEN
+    14: DOTWEEN
+    19: DOTWEEN
+    21: DOTWEEN
+    25: DOTWEEN
+    27: DOTWEEN
+    28: DOTWEEN
+    29: DOTWEEN
+    30: DOTWEEN
+    31: DOTWEEN
+    32: DOTWEEN
+    33: DOTWEEN
   additionalCompilerArguments: {}
   platformArchitecture:
     iPhone: 1
@@ -814,31 +830,46 @@ PlayerSettings:
     Windows Store Apps: 3
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: NoiseScene
+  metroPackageName: VARCITIES.GoNatureAR
   metroPackageVersion: 1.0.0.0
   metroCertificatePath: Assets/WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: Microsoft
-  metroCertificateIssuer: Microsoft
-  metroCertificateNotAfter: 009c0b537e00da01
-  metroApplicationDescription: VARCITIES
-  wsaImages: {}
-  metroTileShortName: NoiseScene
+  metroCertificateSubject: Minas
+  metroCertificateIssuer: Minas
+  metroCertificateNotAfter: 0029a28eb478db01
+  metroApplicationDescription: An educational audio-visual journey in mixed reality,
+    promoting environmental awareness.
+  wsaImages:
+    65636: Assets/Resources/GoNature AR icons/50x50_icon.png
+    131172: Assets/Resources/GoNature AR icons/splash_100.png
+    131272: Assets/Resources/GoNature AR icons/splash_200.png
+    2031640: Assets/Resources/GoNature AR icons/24x24_icon.png
+    2031716: "Assets/Resources/GoNature AR icons/44\u03C744_icon.png"
+    2031816: Assets/Resources/GoNature AR icons/88x88_icon.png
+    2097252: "Assets/Resources/GoNature AR icons/71\u03C771_icon.png"
+    2097352: Assets/Resources/GoNature AR icons/142x142_icon.png
+    2162788: "Assets/Resources/GoNature AR icons/150\u03C7150_icon.png"
+    2162888: Assets/Resources/GoNature AR icons/300x300_icon.png
+    2228324: "Assets/Resources/GoNature AR icons/310\u03C7310_icon.png"
+    2228424: Assets/Resources/GoNature AR icons/620x620_icon.png
+    2293860: "Assets/Resources/GoNature AR icons/310\u03C7150_icon.png"
+    2293960: Assets/Resources/GoNature AR icons/620x300_icon.png
+  metroTileShortName: GoNatureAR
   metroTileShowName: 0
-  metroMediumTileShowName: 0
-  metroLargeTileShowName: 0
-  metroWideTileShowName: 0
+  metroMediumTileShowName: 1
+  metroLargeTileShowName: 1
+  metroWideTileShowName: 1
   metroSupportStreamingInstall: 0
   metroLastRequiredScene: 0
   metroDefaultTileSize: 1
   metroTileForegroundText: 1
-  metroTileBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21568628, a: 0}
-  metroSplashScreenBackgroundColor: {r: 0.12941177, g: 0.17254902, b: 0.21568628,
-    a: 1}
-  metroSplashScreenUseBackgroundColor: 0
+  metroTileBackgroundColor: {r: 0.29231557, g: 0.08419366, b: 0.41509432, a: 0}
+  metroSplashScreenBackgroundColor: {r: 0.29231557, g: 0.08419366, b: 0.41509432,
+    a: 0}
+  metroSplashScreenUseBackgroundColor: 1
   platformCapabilities:
     WindowsStoreApps:
-      CodeGeneration: False
+      EnterpriseAuthentication: False
       OfflineMapsManagement: False
       HumanInterfaceDevice: False
       Location: False
@@ -874,8 +905,8 @@ PlayerSettings:
       Contacts: False
       Proximity: False
       InternetClient: True
+      CodeGeneration: False
       BackgroundMediaPlayback: False
-      EnterpriseAuthentication: False
   metroTargetDeviceFamilies:
     Desktop: False
     Holographic: False

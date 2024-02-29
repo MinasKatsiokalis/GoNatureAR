@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCustomProfile: 1
   startBehavior: 0
-  recognitionConfidenceLevel: 1
+  recognitionConfidenceLevel: 2
   speechCommands:
   - localizationKey: 
     keyword: Open
@@ -32,14 +32,7 @@ MonoBehaviour:
       axisConstraint: 2
   - localizationKey: 
     keyword: Close
-    keyCode: 99
-    action:
-      id: 0
-      description: Toggle Diagnostics
-      axisConstraint: 0
-  - localizationKey: 
-    keyword: Change Color
-    keyCode: 114
+    keyCode: 27
     action:
       id: 0
       description: Toggle Diagnostics
@@ -52,35 +45,49 @@ MonoBehaviour:
       description: Toggle Diagnostics
       axisConstraint: 0
   - localizationKey: 
-    keyword: Julie Come
-    keyCode: 0
-    action:
-      id: 0
-      description: Toggle Diagnostics
-      axisConstraint: 0
-  - localizationKey: 
     keyword: Let's go
-    keyCode: 0
+    keyCode: 108
     action:
       id: 0
       description: Toggle Diagnostics
       axisConstraint: 0
   - localizationKey: 
     keyword: Yes
-    keyCode: 0
+    keyCode: 121
     action:
       id: 0
       description: Toggle Diagnostics
       axisConstraint: 0
   - localizationKey: 
     keyword: Stop
-    keyCode: 0
+    keyCode: 32
     action:
       id: 0
       description: Toggle Diagnostics
       axisConstraint: 0
   - localizationKey: 
     keyword: Continue
+    keyCode: 99
+    action:
+      id: 0
+      description: Toggle Diagnostics
+      axisConstraint: 0
+  - localizationKey: 
+    keyword: Restart
+    keyCode: 114
+    action:
+      id: 0
+      description: Toggle Diagnostics
+      axisConstraint: 0
+  - localizationKey: 
+    keyword: Start
+    keyCode: 0
+    action:
+      id: 0
+      description: Toggle Diagnostics
+      axisConstraint: 0
+  - localizationKey: 
+    keyword: Tutorial
     keyCode: 0
     action:
       id: 0

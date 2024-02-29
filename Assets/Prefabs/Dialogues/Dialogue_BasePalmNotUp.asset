@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 715e33f4352c9504298160de11462ccf, type: 3}
+  m_Name: Dialogue_BasePalmNotUp
+  m_EditorClassIdentifier: 
+  DialogueKey:
+    State: 0
+    Keyword: 1
+  Text: Please, keep your palm facing up.
+  AudioClip: {fileID: 8300000, guid: d815799d8f06b4e41ae41094b7ee73ea, type: 3}

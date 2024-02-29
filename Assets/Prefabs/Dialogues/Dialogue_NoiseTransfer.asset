@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 715e33f4352c9504298160de11462ccf, type: 3}
+  m_Name: Dialogue_NoiseTransfer
+  m_EditorClassIdentifier: 
+  DialogueKey:
+    State: 3
+    Keyword: 7
+  Text: 'The urban environments are not so relaxing all the time.
+
+    Frequently
+    we expose ourselves to high levels of noise.
+
+    
+
+    Do you wanna feel the
+    difference of higher noise levels?'
+  AudioClip: {fileID: 8300000, guid: ca225ada510a67948846b257de0d8305, type: 3}
