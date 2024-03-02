@@ -2,7 +2,8 @@
     "name": "Requests",
     "rootNamespace": "GoNatureAR.Requests",
     "references": [
-        "GUID:facd9ea820ce8b749b10e218c97c830f"
+        "GUID:facd9ea820ce8b749b10e218c97c830f",
+        "GUID:fa49ce1e6f828b94c88b777394be8fd6"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
