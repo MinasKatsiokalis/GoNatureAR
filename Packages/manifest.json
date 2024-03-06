@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "com.microsoft.mixedreality.openxr": "file:MixedReality/com.microsoft.mixedreality.openxr-1.5.1.tgz",
+    "com.microsoft.mixedreality.sceneunderstanding": "file:MixedReality/com.microsoft.mixedreality.sceneunderstanding-0.6.0.tgz",
     "com.microsoft.spatialaudio.spatializer.unity": "file:MixedReality/com.microsoft.spatialaudio.spatializer.unity-2.0.37.tgz",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
@@ -18,6 +19,7 @@
     "com.unity.visualeffectgraph": "10.9.0",
     "com.unity.xr.arfoundation": "4.1.12",
     "com.unity.xr.legacyinputhelpers": "2.1.9",
+    "com.unity.xr.oculus": "1.12.1",
     "com.unity.xr.openxr": "1.5.3",
     "com.unity.xr.windowsmr": "4.6.4",
     "com.unity.modules.ai": "1.0.0",
@@ -50,7 +52,6 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0",
-    "com.microsoft.mixedreality.sceneunderstanding": "file:MixedReality/com.microsoft.mixedreality.sceneunderstanding-0.6.0.tgz"
+    "com.unity.modules.xr": "1.0.0"
   }
 }

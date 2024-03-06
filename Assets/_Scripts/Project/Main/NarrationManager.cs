@@ -1,13 +1,12 @@
 using GoNatureAR.Requests;
-using GoNatureAR.Sensors;
 using Microsoft.MixedReality.Toolkit.Input;
-using Microsoft.MixedReality.Toolkit.UI;
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
+using System.Timers;
 using Timer = System.Timers.Timer;
 using static GoNatureAR.SpeechProfile;
-using System.Timers;
+using Oculus.Voice;
 
 namespace GoNatureAR
 {
@@ -28,6 +27,8 @@ namespace GoNatureAR
         private NarrationScriptableObject _narrationSequence;
         [SerializeField]
         private GameObject _pilotsPanel;
+        [SerializeField]
+        private AppVoiceExperience appVoiceExperience;
 
         private SpeechInputHandler speechInputHandler;
         private DialogueKey currentDialogueKey;
@@ -82,14 +83,41 @@ namespace GoNatureAR
 
         private void Start()
         {
+            /*
             speechInputHandler = GetComponent<SpeechInputHandler>();
-
             speechInputHandler.AddResponse(GetKeywordToString(Keyword.Julie), JulieCalled);
             speechInputHandler.AddResponse(GetKeywordToString(Keyword.Continue), () => GetDialogue(Keyword.Continue));
             speechInputHandler.AddResponse(GetKeywordToString(Keyword.Yes), () => GetDialogue(Keyword.Yes));
             speechInputHandler.AddResponse(GetKeywordToString(Keyword.LetsGo), () => GetDialogue(Keyword.LetsGo));
             speechInputHandler.AddResponse("Restart", () => OnReset?.Invoke());
+            */
         }
+
+        #region META QUEST RESPONSES
+        public void ResponseToContinue()
+        {   
+            Debug.Log("Continue");
+            GetDialogue(Keyword.Continue);
+        }
+
+        public void ResponseToLetsGo()
+        {   
+            Debug.Log("LetsGo");
+            GetDialogue(Keyword.LetsGo);
+        }
+
+        public void ResponseToYes()
+        {   
+            Debug.Log("Yes");
+            GetDialogue(Keyword.Yes);
+        }
+
+        public void ResponseToRestart()
+        {   
+            Debug.Log("Restart");
+            OnReset?.Invoke();
+        }
+        #endregion
 
         private void OnChangeStateHandler(State state)
         {
@@ -115,8 +143,11 @@ namespace GoNatureAR
             }
         }
 
+
         private async void GetDialogue(Keyword keyword)
-        {   
+        {
+            appVoiceExperience.Deactivate();
+
             //Before talk
             if (keyword == Keyword.Yes && (currentDialogueKey.State == State.Temperature ||
                                           currentDialogueKey.State == State.Noise ||
@@ -157,6 +188,8 @@ namespace GoNatureAR
             Debug.Log(currentDialogueKey.State + " " + currentDialogueKey.Keyword );
             OnDialogueTrigger?.Invoke(_narrationSequence.GetDialogueByKey(currentDialogueKey));
 
+            appVoiceExperience.Activate();
+
             //After talk
             if (currentDialogueKey.State == State.Introduction && currentDialogueKey.Keyword == Keyword.Continue)
             {
@@ -181,14 +214,19 @@ namespace GoNatureAR
             }
 
         }
-        private void JulieCalled()
-        {
+        public void JulieCalled()
+        {   
+            Debug.Log("Julie called");
             OnDialogueTrigger?.Invoke(_narrationSequence.GetDialogueByKey(new DialogueKey(State.Introduction, Keyword.Julie)));
+
+            appVoiceExperience.Activate();
         }
 
         public void GetPalmNotUpDialogue()
         {
             OnDialogueTrigger?.Invoke(_narrationSequence.GetDialogueByKey(new DialogueKey(State.Introduction, Keyword.Palm)));
+
+            appVoiceExperience.Activate();
         }
 
         #region AIR QUALITY

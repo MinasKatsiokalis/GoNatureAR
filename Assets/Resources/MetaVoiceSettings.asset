@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5a46bda3295124c99b0e6537ac7252, type: 3}
+  m_Name: MetaVoiceSettings
+  m_EditorClassIdentifier: 
+  application:
+    witConfiguration: {fileID: 11400000}
+    name: go_nature_ar
+    id: 7133975333322664
+    lang: en
+    isPrivate: 1
+    createdAt: 2024-03-06T10:07:58-0800
+  configId: 84e096c630fbb784b931de288b9e1d82
+  clientAccessToken: FSKB23KL6A5MOLXB4XPH2KZXBK3DKCXZ
+  timeoutMS: 10000
+  endpointConfiguration:
+    uriScheme: 
+    authority: 
+    port: 0
+    witApiVersion: 
+    speech: 
+    message: 
+  entities: []
+  intents:
+  - witConfiguration: {fileID: 11400000}
+    id: 430632699536362
+    name: call_julie
+    entities: []
+  - witConfiguration: {fileID: 11400000}
+    id: 778640130376965
+    name: continue
+    entities: []
+  - witConfiguration: {fileID: 11400000}
+    id: 295100863357662
+    name: keep_on
+    entities: []
+  - witConfiguration: {fileID: 11400000}
+    id: 1063145954771654
+    name: reset
+    entities: []
+  - witConfiguration: {fileID: 11400000}
+    id: 943171374093221
+    name: yes
+    entities: []
+  traits: []
+  isDemoOnly: 0
