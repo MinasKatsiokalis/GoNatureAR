@@ -1,9 +1,9 @@
 # GoNatureAR
  **Mixed Reality audio-visual experience, designed & developed for Hololens2 devices.**
-> [!TIP]
+
 > Documentation of project structure: [Documentation](https://minaskatsiokalis.github.io/gonature-ar/documentation/html/index.html). <br>
 
-> [!INFO]
+> [!TIP]
 > For Meta Quest port: [GoNature AR - Meta Quest](https://github.com/MinasKatsiokalis/GoNatureAR-MetaQuest)
 
 Main means of interaction: voice, hands
